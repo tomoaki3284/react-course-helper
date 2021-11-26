@@ -1,0 +1,19 @@
+.course {
+  display: flex block;
+  margin-bottom: 60px;
+}
+
+.course__title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.course__description {
+  font-size: 16px;
+}
+
+.course__categories {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: lightgray;
+}
