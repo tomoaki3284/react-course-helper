@@ -1,4 +1,5 @@
 import React from 'react';
+import CourseSectionTable from './CourseSectionTable';
 import '../../css/courseItem.css';
 
 class CourseItem extends React.Component {
@@ -26,13 +27,7 @@ class CourseItem extends React.Component {
         </div>
         {
           this.state.expanded ? 
-          <div>
-            {this.courseSections.map(function(item) {
-              return <ul>
-                <li key={item.courseCRN}>{item.courseCRN}</li>
-              </ul>
-            })}
-          </div> 
+          <CourseSectionTable courseSections={this.courseSections}/>
           :
           <div></div>
         }

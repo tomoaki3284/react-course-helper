@@ -9,11 +9,11 @@
 }
 
 .course__description {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .course__categories {
   margin-bottom: 10px;
-  font-size: 14px;
-  color: lightgray;
+  font-size: 18px;
+  color: rgb(175, 175, 175);
 }
