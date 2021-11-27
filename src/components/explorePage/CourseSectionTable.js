@@ -1,5 +1,6 @@
 import React from "react";
 import { useTable } from 'react-table'
+import '../../css/courseSectionTable.css';
 
 function CourseSectionTable({ courseSections }) {
   console.log(courseSections)
@@ -34,7 +35,7 @@ function CourseSectionTable({ courseSections }) {
   )
 
   return (
-    <div>
+    <div className='table-container'>
       <Table columns={columns} data={data} />
     </div>
   )
@@ -56,7 +57,7 @@ function Table({ columns, data }) {
   // Render the UI for your table
   return (
     <table {...getTableProps()}>
-      <thead>
+      <thead className="table-header">
         {headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map(column => (

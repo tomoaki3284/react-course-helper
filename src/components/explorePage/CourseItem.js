@@ -21,7 +21,7 @@ class CourseItem extends React.Component {
     return (
       <div onClick={this.handleClick.bind(this)} className="course">
         <p className="course__title">{this.course.title}</p>
-        <p className="course__categories">{this.course.subject} | {this.course.credit}.0 | {this.course.cores}</p>
+        <p className="course__categories">{this.course.subject} | {this.course.credit}.0 | {this.course.cores.join(', ')}</p>
         <div className="course__description">
           {this.course.courseDescription}
         </div>

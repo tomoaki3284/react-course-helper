@@ -1,11 +1,16 @@
 import React from 'react';
 import ManualScheduleTab from './manualScheduleTab';
+import FilterGroup from './FilterGroup';
+import '../../css/ExplorePage.css';
+import CourseFilter from '../../controller/CourseFilter';
 
 class ExplorePage extends React.Component {
   constructor(props) {
     super(props);
+    this.courseFilter = new CourseFilter();
     this.state = {
       coursesMapByTitle: null,
+      filteredCourseMap: null,
     };
   }
 
@@ -20,8 +25,11 @@ class ExplorePage extends React.Component {
     // GET request using fetch with async/await
     const courseMap = await this.fetchCourses();
 
+    console.log(courseMap);
+
     this.setState({
       coursesMapByTitle: courseMap,
+      filteredCourseMap: courseMap,
     })
   }
 
@@ -40,9 +48,26 @@ class ExplorePage extends React.Component {
     return courses;
   }
 
+  onInputChangeInFilter(thisInstance, event, newValue, filterTitle) {
+    if (filterTitle === null || filterTitle === undefined) {
+      return;
+    }
+
+    //todo - filter course
+    thisInstance.courseFilter.setFilter(filterTitle, newValue);
+    const newFilteredCourseMap = thisInstance.courseFilter.filterCourse(thisInstance.state.coursesMapByTitle);
+    console.log(newFilteredCourseMap);
+    thisInstance.setState({
+      filteredCourseMap: newFilteredCourseMap,
+    });
+  }
+
   render() {
     return (
-      <ManualScheduleTab coursesMapByTitle={this.state.coursesMapByTitle}/>
+      <div className='explore-container'>
+        <FilterGroup className='explore-container__sticky-filter' parent={this} onInputChange={this.onInputChangeInFilter}/>
+        <ManualScheduleTab coursesMapByTitle={this.state.filteredCourseMap}/>
+      </div>
     );
   }
 }

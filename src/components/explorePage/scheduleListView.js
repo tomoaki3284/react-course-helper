@@ -37,7 +37,7 @@ class ScheduleListView extends React.Component {
   }
 
   render() {
-    if (this.state.coursesMapByTitle !== null && this.state.coursesMapByTitle !== undefined) {
+    if (this.state.coursesMapByTitle !== null && this.state.coursesMapByTitle !== undefined && this.state.coursesMapByTitle.size !== 0) {
       const courses = this.courseMapToArray();
 
       return (

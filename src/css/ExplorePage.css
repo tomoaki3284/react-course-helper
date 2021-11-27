@@ -1,0 +1,8 @@
+.explore-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  max-width: 100%;
+  margin-left: 8rem;
+  margin-right: 8rem;
+}

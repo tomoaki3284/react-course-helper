@@ -1,0 +1,14 @@
+.filter-header {
+  top: 0px;
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  margin-top: 8rem;
+  align-items: flex-start;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+}
+
+.filter-header__combobox {
+  margin-top: 2rem;
+}
