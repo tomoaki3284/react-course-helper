@@ -48,7 +48,7 @@ class CourseFilter {
       const course = courseEntry.courses[0];
       return (this.emptyString(this.core) || course.cores.includes(this.core) || this.core === 'Double Core') &&
              (this.emptyString(this.mode) || course.room.toLocaleLowerCase() === this.mode) &&
-             (this.emptyString(this.subject) || course.subject.toLocaleLowerCase() === this.subject);
+             (this.emptyString(this.subject) || course.subject === this.subject);
     })
     .forEach((filteredCourseEntry) => {
       const title = filteredCourseEntry.title;
