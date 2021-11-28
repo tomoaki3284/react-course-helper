@@ -52,8 +52,7 @@ class ExplorePage extends React.Component {
     if (filterTitle === null || filterTitle === undefined) {
       return;
     }
-
-    //todo - filter course
+    
     thisInstance.courseFilter.setFilter(filterTitle, newValue);
     const newFilteredCourseMap = thisInstance.courseFilter.filterCourse(thisInstance.state.coursesMapByTitle);
     console.log(newFilteredCourseMap);

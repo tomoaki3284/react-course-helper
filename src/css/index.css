@@ -14,7 +14,11 @@
 }
 
 .tab-container {
+  background-color: white;
   display: flex;
+  top: 0rem;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
 }
 
 .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
