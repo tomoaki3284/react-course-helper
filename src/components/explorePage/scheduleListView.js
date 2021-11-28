@@ -5,6 +5,8 @@ import '../../css/scheduleListView.css';
 class ScheduleListView extends React.Component {
   constructor(props) {
     super(props);
+    // use in course section table
+    this.handleAddCourse = props.handleAddCourse;
     this.state = {
       coursesMapByTitle: props.coursesMapByTitle,
     };
@@ -46,7 +48,7 @@ class ScheduleListView extends React.Component {
             Object.entries(courses).map(([index, courseObj]) => {
               const title = courseObj["title"];
               const cs = courseObj["courses"];
-              return <CourseItem key={title} course={cs[0]} courseSections={cs}/>
+              return <CourseItem key={title} course={cs[0]} courseSections={cs} />
             })
           }
         </div>

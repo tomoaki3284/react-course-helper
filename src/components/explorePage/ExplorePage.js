@@ -8,6 +8,8 @@ class ExplorePage extends React.Component {
   constructor(props) {
     super(props);
     this.courseFilter = new CourseFilter();
+    // use in course section table
+    this.handleAddCourse = props.handleAddCourse;
     this.state = {
       coursesMapByTitle: null,
       filteredCourseMap: null,
@@ -33,7 +35,7 @@ class ExplorePage extends React.Component {
     })
   }
 
-  async fetchCourses() {
+  async fetchCourses() { 
     const courses = await fetch('http://localhost:8081/api/v1/courses/group-by-title')
     .then((response) => {
       if (response.status >= 400 && response.status < 600) {
@@ -48,15 +50,15 @@ class ExplorePage extends React.Component {
     return courses;
   }
 
-  onInputChangeInFilter(thisInstance, event, newValue, filterTitle) {
+  onInputChangeInFilter(event, newValue, filterTitle) {
     if (filterTitle === null || filterTitle === undefined) {
       return;
     }
-    
-    thisInstance.courseFilter.setFilter(filterTitle, newValue);
-    const newFilteredCourseMap = thisInstance.courseFilter.filterCourse(thisInstance.state.coursesMapByTitle);
+
+    this.courseFilter.setFilter(filterTitle, newValue);
+    const newFilteredCourseMap = this.courseFilter.filterCourse(this.state.coursesMapByTitle);
     console.log(newFilteredCourseMap);
-    thisInstance.setState({
+    this.setState({
       filteredCourseMap: newFilteredCourseMap,
     });
   }
@@ -64,8 +66,8 @@ class ExplorePage extends React.Component {
   render() {
     return (
       <div className='explore-container'>
-        <FilterGroup className='explore-container__sticky-filter' parent={this} onInputChange={this.onInputChangeInFilter}/>
-        <ManualScheduleTab coursesMapByTitle={this.state.filteredCourseMap}/>
+        <FilterGroup className='explore-container__sticky-filter'  onInputChange={this.onInputChangeInFilter.bind(this)}/>
+        <ManualScheduleTab coursesMapByTitle={this.state.filteredCourseMap} handleAddCourse={this.handleAddCourse}/>
       </div>
     );
   }

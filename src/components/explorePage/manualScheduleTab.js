@@ -4,6 +4,8 @@ import ScheduleListView from './scheduleListView';
 class ManualScheduleTab extends React.Component {
   constructor(props) {
     super(props);
+    // use in course section table
+    this.handleAddCourse = props.handleAddCourse;
     this.state = {
       coursesMapByTitle: props.coursesMapByTitle,
     }
@@ -30,7 +32,7 @@ class ManualScheduleTab extends React.Component {
 
   render() {
     return (
-      <ScheduleListView coursesMapByTitle={this.state.coursesMapByTitle}/>
+      <ScheduleListView coursesMapByTitle={this.state.coursesMapByTitle} />
     );
   }
 }
