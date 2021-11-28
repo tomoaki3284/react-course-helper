@@ -4,16 +4,39 @@
 }
 
 .course__title {
+  display: flex;
   font-size: 24px;
-  margin-bottom: 10px;
+  margin-bottom: 0;
+  padding-left: 0.5rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.course__title:hover {
+  background-color: #F0F0F0;
+  color: #5CB9ED;
 }
 
 .course__description {
-  font-size: 18px;
+  font-size: 16px;
+  color: #4d4d4d;
 }
 
 .course__categories {
-  margin-bottom: 10px;
-  font-size: 18px;
+  margin-bottom: 0.2rem;
+  font-size: 16px;
+  font-size: 80%;
+  font-weight: 400;
   color: rgb(175, 175, 175);
+}
+
+.course__plus-icon {
+  background-image: url('../asset/images/icons8-plus_+.png');
+  background-repeat: no-repeat;
+  height: 25px;
+  width: 25px;
+  float: right;
+  padding-right: 35px;
 }

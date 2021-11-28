@@ -19,8 +19,8 @@ class CourseItem extends React.Component {
 
   render() {
     return (
-      <div onClick={this.handleClick.bind(this)} className="course">
-        <p className="course__title">{this.course.title}</p>
+      <div className="course">
+        <p onClick={this.handleClick.bind(this)} className="course__title">{this.course.title}<span className='course__plus-icon'></span></p>
         <p className="course__categories">{this.course.subject} | {this.course.credit}.0 | {this.course.cores.join(', ')}</p>
         <div className="course__description">
           {this.course.courseDescription}

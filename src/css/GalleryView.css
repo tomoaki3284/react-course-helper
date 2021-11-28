@@ -1,0 +1,11 @@
+.gallery-container {
+  display: flex;
+  height: 600px;
+  width: 100%;
+  background-image: url('../asset/images/lammers.jpeg');
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

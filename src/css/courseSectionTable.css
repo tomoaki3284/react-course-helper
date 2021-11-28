@@ -12,15 +12,21 @@ table {
 
 .table-header, th {
   border-bottom: 1px solid #888888;
-  padding: 1rem;
+  padding: 0.5rem;
+  font-size: 12px;
+  text-transform: uppercase;
   color: #888888;
 }
 
 td {
   margin: 10rem;
-  padding: 1rem;
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   border-bottom: 1px solid black;
   border-right: 1px solid black;
+  font-size: 14px;
+  font-weight: 300;
 }
 
 th {

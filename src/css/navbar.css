@@ -1,5 +1,22 @@
 #mynavbar {
-  margin: 0px;
-  padding: 0px;
-  max-width: 2000px;
+  max-width: 100%;
+  padding: 0;
+}
+
+.wsu-logo {
+  content: url('../asset/images/wsu-logo.png');
+  width: 8rem;
+  margin: 0.5rem;
+}
+
+.nav-links {
+  width: 20rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+a {
+  color: black !important;
+  text-decoration: none !important; /* no underline */
 }

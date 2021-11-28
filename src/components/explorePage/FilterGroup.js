@@ -6,7 +6,7 @@ import '../../css/FilterGroup.css';
 const FilterGroup = (props) => {
   return (
     <div className='filter-header'>
-      <p className='filter-header__title'>Filters</p>
+      <p className='filter-header__title'>FILTERS</p>
       <ComboBox filterTitle='core' filterArr={props.cores} onInputChange={props.onInputChange} parent={props.parent}/>
       <ComboBox filterTitle='mode' filterArr={props.modes} onInputChange={props.onInputChange} parent={props.parent}/>
       <ComboBox filterTitle='subject' filterArr={props.subjects} onInputChange={props.onInputChange} parent={props.parent}/>
