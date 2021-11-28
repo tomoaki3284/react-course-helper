@@ -4,35 +4,14 @@ import FilterGroup from './FilterGroup';
 import '../../css/ExplorePage.css';
 import CourseFilter from '../../controller/CourseFilter';
 
-const ExplorePage = ({coursesMapByTitleProp, filteredCourseMapProp}) => {
+const ExplorePage = ({coursesMapByTitleProp}) => {
   const [coursesMapByTitle, setCoursesMapByTitle] = React.useState(coursesMapByTitleProp);
-  const [filteredCourseMap, setFilteredCourseMap] = React.useState(filteredCourseMapProp);
+  const [filteredCourseMap, setFilteredCourseMap] = React.useState(coursesMapByTitleProp);
   const courseFilter = new CourseFilter();
 
   useEffect(() => {
-    async function fetchCourses() {
-      // GET request using fetch with async/await
-      const courseMap = await fetchFromAPI();
-      setCoursesMapByTitle(courseMap);
-      setFilteredCourseMap(courseMap);
-    }
-
-    async function fetchFromAPI() { 
-      const courses = await fetch('http://localhost:8081/api/v1/courses/group-by-title')
-      .then((response) => {
-        if (response.status >= 400 && response.status < 600) {
-          throw new Error("Bad response from server");
-        }
-        return response.json();
-      })
-      .catch((error) => {
-        console.log(error)
-      });
-  
-      return courses;
-    }
-
-    fetchCourses();
+    setCoursesMapByTitle(coursesMapByTitleProp);
+    setFilteredCourseMap(coursesMapByTitleProp);
   });
 
   function onInputChangeInFilter(event, newValue, filterTitle) {
@@ -52,4 +31,4 @@ const ExplorePage = ({coursesMapByTitleProp, filteredCourseMapProp}) => {
   );
 }
 
-export default ExplorePage
+export default ExplorePage;

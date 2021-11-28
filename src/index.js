@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
 import Navbar from './components/navbar';
@@ -14,6 +14,7 @@ import TabPanel from '@mui/lab/TabPanel';
 const Home =  () => {
   const [value, setValue] = React.useState('1');
   const [schedule, setSchedule] = React.useState([]);
+  const [coursesMapByTitle, setCoursesMapByTitle] = React.useState(null);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -22,6 +23,31 @@ const Home =  () => {
   const handleAddCourse = (course) => {
     setSchedule([...schedule, course]);
   }
+
+  useEffect(() => {
+    async function fetchCourses() {
+      // GET request using fetch with async/await
+      const courseMap = await fetchFromAPI();
+      setCoursesMapByTitle(courseMap);
+    }
+
+    async function fetchFromAPI() { 
+      const courses = await fetch('http://localhost:8081/api/v1/courses/group-by-title')
+      .then((response) => {
+        if (response.status >= 400 && response.status < 600) {
+          throw new Error("Bad response from server");
+        }
+        return response.json();
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+  
+      return courses;
+    }
+
+    fetchCourses();
+  });
 
   return (
     <div className='page-container'>
@@ -36,7 +62,7 @@ const Home =  () => {
             </TabList>
           </Box>
           <TabPanel value="1">
-            <ExplorePage />
+            <ExplorePage coursesMapByTitleProp={coursesMapByTitle}/>
           </TabPanel>
           <TabPanel value="2">Item Two</TabPanel>
         </TabContext>
