@@ -2,13 +2,23 @@ import React from "react";
 import { useTable } from 'react-table'
 import '../../css/courseSectionTable.css';
 
-const CourseSectionTable = ({ courseSections }) => {
+const CourseSectionTable = ({ courseSections, handleAddCourse }) => {
   const data = React.useMemo(
     () => courseSections, [courseSections]
   )
 
   const columns = React.useMemo(
     () => [
+      {
+        // Make an expander cell
+        Header: () => null, // No header
+        id: 'addButton', // It needs an ID
+        Cell: ({ row }) => (
+          <img className='course-add-button' alt='course-add-button' onClick={(event) => {
+            handleAddCourse(data[row.id]);
+          }} />
+        ),
+      },
       {
         Header: 'CRN',
         accessor: 'courseCRN', // accessor is the "key" in the data

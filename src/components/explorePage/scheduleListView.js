@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CourseItem from './CourseItem';
 import '../../css/scheduleListView.css';
 
-const ScheduleListView = ({coursesMapByTitle}) => {
+const ScheduleListView = ({coursesMapByTitle, handleAddCourse}) => {
   const [filteredCourseMap, setFilteredCourseMap] = useState(coursesMapByTitle);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const ScheduleListView = ({coursesMapByTitle}) => {
             Object.entries(courses).map(([index, courseObj]) => {
               const title = courseObj["title"];
               const cs = courseObj["courses"];
-              return <CourseItem key={title} course={cs[0]} courseSections={cs} />
+              return <CourseItem key={title} course={cs[0]} courseSections={cs} handleAddCourse={handleAddCourse}/>
             })
           }
         </div>

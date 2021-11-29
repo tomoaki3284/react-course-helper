@@ -13,8 +13,15 @@ import TabPanel from '@mui/lab/TabPanel';
 
 const Home =  () => {
   const [value, setValue] = React.useState('1');
-  // const [schedule, setSchedule] = React.useState([]);
   const [coursesMapByTitle, setCoursesMapByTitle] = React.useState(null);
+  var schedule = [];
+
+  const handleAddCourse = (course) => {
+    if (course === null || course === undefined || schedule.includes(course)) return;
+
+    schedule = [...schedule, course];
+    console.log(schedule);
+  }
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -59,7 +66,7 @@ const Home =  () => {
             </TabList>
           </Box>
           <TabPanel value="1">
-            <ExplorePage coursesMapByTitleProp={coursesMapByTitle}/>
+            <ExplorePage coursesMapByTitleProp={coursesMapByTitle} handleAddCourse={handleAddCourse}/>
           </TabPanel>
           <TabPanel value="2">Item Two</TabPanel>
         </TabContext>

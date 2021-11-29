@@ -6,7 +6,7 @@ import CourseFilter from '../../controller/CourseFilter';
 
 const courseFilter = new CourseFilter();
 
-const ExplorePage = ({coursesMapByTitleProp}) => {
+const ExplorePage = ({coursesMapByTitleProp, handleAddCourse}) => {
   const [coursesMapByTitle, setCoursesMapByTitle] = useState(coursesMapByTitleProp);
   const [filteredCourseMap, setFilteredCourseMap] = useState(coursesMapByTitleProp);
   
@@ -27,7 +27,7 @@ const ExplorePage = ({coursesMapByTitleProp}) => {
   return (
     <div className='explore-container'>
       <FilterGroup className='explore-container__sticky-filter'  onInputChange={onInputChangeInFilter}/>
-      <ManualScheduleTab coursesMapByTitle={filteredCourseMap}/>
+      <ManualScheduleTab coursesMapByTitle={filteredCourseMap} handleAddCourse={handleAddCourse} />
     </div>
   );
 }

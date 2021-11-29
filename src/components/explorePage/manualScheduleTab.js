@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import ScheduleListView from './scheduleListView';
 
-const ManualScheduleTab = ({coursesMapByTitle}) => {
+const ManualScheduleTab = ({coursesMapByTitle, handleAddCourse}) => {
   const [filteredCourseMap, setFilteredCourseMap] = useState(coursesMapByTitle);
 
   useEffect(() => {
@@ -9,7 +9,7 @@ const ManualScheduleTab = ({coursesMapByTitle}) => {
   }, [coursesMapByTitle]);
 
   return (
-    <ScheduleListView coursesMapByTitle={filteredCourseMap} />
+    <ScheduleListView coursesMapByTitle={filteredCourseMap} handleAddCourse={handleAddCourse} />
   );
 }
 

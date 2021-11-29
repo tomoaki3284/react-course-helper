@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import CourseSectionTable from './CourseSectionTable';
 import '../../css/courseItem.css';
 
-const CourseItem = ({course, courseSections}) => {
+const CourseItem = ({course, courseSections, handleAddCourse}) => {
   const [expanded, setExpanded] = useState(false);
 
   const handleClick = () => {
@@ -18,7 +18,7 @@ const CourseItem = ({course, courseSections}) => {
       </div>
       {
         expanded ? 
-        <CourseSectionTable courseSections={courseSections}/>
+        <CourseSectionTable courseSections={courseSections} handleAddCourse={handleAddCourse}/>
         :
         <div></div>
       }
