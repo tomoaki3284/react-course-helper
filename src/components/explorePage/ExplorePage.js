@@ -4,11 +4,12 @@ import FilterGroup from './FilterGroup';
 import '../../css/ExplorePage.css';
 import CourseFilter from '../../controller/CourseFilter';
 
+const courseFilter = new CourseFilter();
+
 const ExplorePage = ({coursesMapByTitleProp}) => {
   const [coursesMapByTitle, setCoursesMapByTitle] = useState(coursesMapByTitleProp);
   const [filteredCourseMap, setFilteredCourseMap] = useState(coursesMapByTitleProp);
-  const courseFilter = new CourseFilter();
-
+  
   useEffect(() => {
     setCoursesMapByTitle(coursesMapByTitleProp);
     setFilteredCourseMap(coursesMapByTitleProp);
