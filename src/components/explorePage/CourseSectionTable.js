@@ -2,8 +2,7 @@ import React from "react";
 import { useTable } from 'react-table'
 import '../../css/courseSectionTable.css';
 
-function CourseSectionTable({ courseSections }) {
-  console.log(courseSections)
+const CourseSectionTable = ({ courseSections }) => {
   const data = React.useMemo(
     () => courseSections, [courseSections]
   )
@@ -41,7 +40,7 @@ function CourseSectionTable({ courseSections }) {
   )
 }
 
-function Table({ columns, data }) {
+const Table = ({ columns, data }) => {
   // Use the state and functions returned from useTable to build your UI
   const {
     getTableProps,
