@@ -1,46 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import CourseItem from './CourseItem';
 import '../../css/scheduleListView.css';
 
-class ScheduleListView extends React.Component {
-  constructor(props) {
-    super(props);
-    // use in course section table
-    this.handleAddCourse = props.handleAddCourse;
-    this.state = {
-      coursesMapByTitle: props.coursesMapByTitle,
-    };
-  }
+const ScheduleListView = ({coursesMapByTitle}) => {
+  const [filteredCourseMap, setFilteredCourseMap] = useState(coursesMapByTitle);
 
-  static getDerivedStateFromProps(props, state) {
-    
-    if (props.coursesMapByTitle !== state.coursesMapByTitle) {
-      console.log("getDrivedStateFromProps: " + props.coursesMapByTitle);
-      return {
-        coursesMapByTitle: props.coursesMapByTitle,
-      };
-    }
-
-    return null;
-  }
+  useEffect(() => {
+    setFilteredCourseMap(coursesMapByTitle);
+  });
 
   /**
    * Because coursesMap couldn't easily converted to array in order to map over,
    * by using existing function (such as Array.from(), [...coursesMap], b/c of shallow copy?),
    * we wrote this function to manually convert the courseMap to array
    */
-  courseMapToArray() {
+  const courseMapToArray = () => {
     let arr = [];
-    for (let title of Object.keys(this.state.coursesMapByTitle)) {
-      const courses = this.state.coursesMapByTitle[title];
+    for (let title of Object.keys(filteredCourseMap)) {
+      const courses = filteredCourseMap[title];
       arr.push({title, courses});
     }
     return arr;
-  }
+  };
 
-  render() {
-    if (this.state.coursesMapByTitle !== null && this.state.coursesMapByTitle !== undefined && this.state.coursesMapByTitle.size !== 0) {
-      const courses = this.courseMapToArray();
+  const render = () => {
+    if (filteredCourseMap !== null && filteredCourseMap !== undefined && filteredCourseMap.size !== 0) {
+      const courses = courseMapToArray();
 
       return (
         <div className="classList">
@@ -61,6 +46,8 @@ class ScheduleListView extends React.Component {
       );
     }
   }
+
+  return render();
 }
 
-export default ScheduleListView
+export default ScheduleListView;

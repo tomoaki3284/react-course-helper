@@ -24,6 +24,7 @@ const Home =  () => {
     setSchedule([...schedule, course]);
   }
 
+  // by passing [] as dependencies (second arg), it will only called once
   useEffect(() => {
     async function fetchCourses() {
       // GET request using fetch with async/await
@@ -47,7 +48,7 @@ const Home =  () => {
     }
 
     fetchCourses();
-  });
+  }, []);
 
   return (
     <div className='page-container'>

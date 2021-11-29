@@ -1,52 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import ScheduleListView from './scheduleListView';
 
-const ManualScheduleTab = ({filteredCourseMap}) => {
-  const [coursesMapByTitle, setCoursesMapByTitle] = useState(filteredCourseMap);
+const ManualScheduleTab = ({coursesMapByTitle}) => {
+  const [filteredCourseMap, setFilteredCourseMap] = useState(coursesMapByTitle);
 
   useEffect(() => {
-    setCoursesMapByTitle(filteredCourseMap);
+    setFilteredCourseMap(coursesMapByTitle);
   });
 
   return (
-    <ScheduleListView coursesMapByTitle={coursesMapByTitle} />
+    <ScheduleListView coursesMapByTitle={filteredCourseMap} />
   );
 }
-
-// class ManualScheduleTab extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     // use in course section table
-//     this.handleAddCourse = props.handleAddCourse;
-//     this.state = {
-//       coursesMapByTitle: props.coursesMapByTitle,
-//     }
-//   }
-
-//   /**
-//    * Parent class will load content (state) from an api asynchronosly.
-//    * So the state needs to be synchronize with the parent state. Therefor,
-//    * we are using getDerivedStateFromProps to update the state whenever the
-//    * state is updated in parent class.
-//    * 
-//    * @param {*} props 
-//    * @param {*} state 
-//    */
-//   static getDerivedStateFromProps(props, state) {
-//     if (props.coursesMapByTitle !== state.coursesMapByTitle) {
-//       return {
-//         coursesMapByTitle: props.coursesMapByTitle,
-//       };
-//     }
-
-//     return null;
-//   }
-
-//   render() {
-//     return (
-//       <ScheduleListView coursesMapByTitle={this.state.coursesMapByTitle} />
-//     );
-//   }
-// }
 
 export default ManualScheduleTab;

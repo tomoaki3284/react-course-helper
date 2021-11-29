@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import ManualScheduleTab from './manualScheduleTab';
 import FilterGroup from './FilterGroup';
 import '../../css/ExplorePage.css';
 import CourseFilter from '../../controller/CourseFilter';
 
 const ExplorePage = ({coursesMapByTitleProp}) => {
-  const [coursesMapByTitle, setCoursesMapByTitle] = React.useState(coursesMapByTitleProp);
-  const [filteredCourseMap, setFilteredCourseMap] = React.useState(coursesMapByTitleProp);
+  const [coursesMapByTitle, setCoursesMapByTitle] = useState(coursesMapByTitleProp);
+  const [filteredCourseMap, setFilteredCourseMap] = useState(coursesMapByTitleProp);
   const courseFilter = new CourseFilter();
 
   useEffect(() => {
