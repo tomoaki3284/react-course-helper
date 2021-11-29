@@ -7,7 +7,7 @@ const ScheduleListView = ({coursesMapByTitle}) => {
 
   useEffect(() => {
     setFilteredCourseMap(coursesMapByTitle);
-  });
+  }, [coursesMapByTitle]);
 
   /**
    * Because coursesMap couldn't easily converted to array in order to map over,

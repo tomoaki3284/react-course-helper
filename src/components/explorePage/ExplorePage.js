@@ -12,7 +12,7 @@ const ExplorePage = ({coursesMapByTitleProp}) => {
   useEffect(() => {
     setCoursesMapByTitle(coursesMapByTitleProp);
     setFilteredCourseMap(coursesMapByTitleProp);
-  });
+  }, [coursesMapByTitleProp]);
 
   function onInputChangeInFilter(event, newValue, filterTitle) {
     if (filterTitle === null || filterTitle === undefined) return;

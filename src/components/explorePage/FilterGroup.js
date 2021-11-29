@@ -3,39 +3,37 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import '../../css/FilterGroup.css';
 
-const FilterGroup = (props) => {
+const FilterGroup = ({onInputChange}) => {
+  const cores = filter['cores'];
+  const modes = filter['modes'];
+  const subjects = filter['subjects'];
+
+  const ComboBox = ({filterArr, filterTitle}) => {
+    return (
+      <div>
+        <h6>{filterTitle}</h6>
+        <Autocomplete
+          className='filter-header__combobox'
+          options={filterArr}
+          onInputChange={(event, newInputValue) => {
+            onInputChange(event, newInputValue, filterTitle);
+          }}
+          style={{ width: 250 }}
+          renderInput={(params) =>
+            <TextField {...params} label={filterTitle} variant="outlined" />}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className='filter-header'>
       <p className='filter-header__title'>FILTERS</p>
-      <ComboBox filterTitle='core' filterArr={props.cores} onInputChange={props.onInputChange} parent={props.parent}/>
-      <ComboBox filterTitle='mode' filterArr={props.modes} onInputChange={props.onInputChange} parent={props.parent}/>
-      <ComboBox filterTitle='subject' filterArr={props.subjects} onInputChange={props.onInputChange} parent={props.parent}/>
+      <ComboBox filterTitle='core' filterArr={cores} />
+      <ComboBox filterTitle='mode' filterArr={modes} />
+      <ComboBox filterTitle='subject' filterArr={subjects} />
     </div>
   );
-}
-
-const ComboBox = ({filterTitle, filterArr, onInputChange, parent}) => {
-  return (
-    <div>
-      <h6>{filterTitle}</h6>
-      <Autocomplete
-        className='filter-header__combobox'
-        options={filterArr}
-        onInputChange={(event, newInputValue) => {
-          onInputChange(parent, event, newInputValue, filterTitle);
-        }}
-        style={{ width: 250 }}
-        renderInput={(params) =>
-          <TextField {...params} label={filterTitle} variant="outlined" />}
-      />
-    </div>
-  );
-}
-
-FilterGroup.defaultProps = {
-  'cores': filter['cores'],
-  'modes': filter['modes'],
-  'subjects': filter['subjects'],
 }
 
 export default FilterGroup;

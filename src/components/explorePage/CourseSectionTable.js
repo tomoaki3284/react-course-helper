@@ -5,7 +5,7 @@ import '../../css/courseSectionTable.css';
 function CourseSectionTable({ courseSections }) {
   console.log(courseSections)
   const data = React.useMemo(
-    () => courseSections
+    () => courseSections, [courseSections]
   )
 
   const columns = React.useMemo(

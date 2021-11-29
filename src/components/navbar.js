@@ -7,7 +7,7 @@ const MyNavbar = () => {
     <Container id="mynavbar">
       <Navbar expand="lg" variant="light" bg="light">
         <Container>
-          <img className='wsu-logo' />
+          <img className='wsu-logo' alt='wsu-logo'/>
           <div className='nav-links'>
             <a href='https://www.westfield.ma.edu/'>Visit</a>
             <a href='https://explore.westfield.ma.edu/RecruitNewWFE/Account/Create'>Apply</a>

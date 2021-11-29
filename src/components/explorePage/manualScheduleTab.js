@@ -6,7 +6,7 @@ const ManualScheduleTab = ({coursesMapByTitle}) => {
 
   useEffect(() => {
     setFilteredCourseMap(coursesMapByTitle);
-  });
+  }, [coursesMapByTitle]);
 
   return (
     <ScheduleListView coursesMapByTitle={filteredCourseMap} />

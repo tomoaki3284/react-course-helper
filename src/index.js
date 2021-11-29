@@ -13,16 +13,12 @@ import TabPanel from '@mui/lab/TabPanel';
 
 const Home =  () => {
   const [value, setValue] = React.useState('1');
-  const [schedule, setSchedule] = React.useState([]);
+  // const [schedule, setSchedule] = React.useState([]);
   const [coursesMapByTitle, setCoursesMapByTitle] = React.useState(null);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  const handleAddCourse = (course) => {
-    setSchedule([...schedule, course]);
-  }
 
   // by passing [] as dependencies (second arg), it will only called once
   useEffect(() => {
