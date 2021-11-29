@@ -1,39 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CourseSectionTable from './CourseSectionTable';
 import '../../css/courseItem.css';
 
-class CourseItem extends React.Component {
-  constructor(props) {
-    super();
-    this.course = props.course;
-    this.courseSections = props.courseSections;
-    this.state = {
-      expanded: false,
-    }
+const CourseItem = ({course, courseSections}) => {
+  const [expanded, setExpanded] = useState(false);
+
+  const handleClick = () => {
+    setExpanded(!expanded);
   }
 
-  handleClick() {
-    const nextState = !this.state.expanded;
-    this.setState({expanded: nextState})
-  }
-
-  render() {
-    return (
-      <div className="course">
-        <p onClick={this.handleClick.bind(this)} className="course__title">{this.course.title}<span className='course__plus-icon'></span></p>
-        <p className="course__categories">{this.course.subject} | {this.course.credit}.0 | {this.course.cores.join(', ')}</p>
-        <div className="course__description">
-          {this.course.courseDescription}
-        </div>
-        {
-          this.state.expanded ? 
-          <CourseSectionTable courseSections={this.courseSections}/>
-          :
-          <div></div>
-        }
+  return (
+    <div className="course">
+      <p onClick={handleClick} className="course__title">{course.title}<span className='course__plus-icon'></span></p>
+      <p className="course__categories">{course.subject} | {course.credit}.0 | {course.cores.join(', ')}</p>
+      <div className="course__description">
+        {course.courseDescription}
       </div>
-    );
-  }
+      {
+        expanded ? 
+        <CourseSectionTable courseSections={courseSections}/>
+        :
+        <div></div>
+      }
+    </div>
+  );
 }
 
-export default CourseItem
+export default CourseItem;
