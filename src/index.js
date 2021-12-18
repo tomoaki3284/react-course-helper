@@ -10,17 +10,22 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
+import FullScreenDialog from './components/FullScreenDialog';
 
 const Home =  () => {
   const [value, setValue] = React.useState('1');
   const [coursesMapByTitle, setCoursesMapByTitle] = React.useState(null);
-  var schedule = [];
+  const [schedule, setSchedule] = React.useState([]);
 
   const handleAddCourse = (course) => {
-    if (course === null || course === undefined || schedule.includes(course)) return;
+    setSchedule(prevState => [...prevState, course]);
+  }
 
-    schedule = [...schedule, course];
-    console.log(schedule);
+  const handleRemoveCourseFromSchedule = (course) => {
+    const copySchedule = [...schedule]
+    let idx = copySchedule.indexOf(course);
+    copySchedule.splice(idx, 1);
+    setSchedule(prevState => copySchedule);
   }
 
   const handleChange = (event, newValue) => {
@@ -31,27 +36,57 @@ const Home =  () => {
   useEffect(() => {
     async function fetchCourses() {
       // GET request using fetch with async/await
-      const courseMap = await fetchFromAPI();
-      setCoursesMapByTitle(courseMap);
+
+      // for prod
+      // const courseMap = await fetchFromAPI();
+      // setCoursesMapByTitle(courseMap);
+
+      // for dev
+      const arr = await require('./asset/current-semester.json');
+      const courseMap = new Map();
+      arr.forEach(course => {
+        if (courseMap.get(course.title) == undefined) {
+          courseMap.set(course.title, [course]);
+        } else {
+          courseMap.get(course.title).push(course);
+        }
+      });
+      setCoursesMapByTitle(Object.fromEntries(courseMap));
+      console.log("api called");
     }
 
-    async function fetchFromAPI() { 
-      const courses = await fetch('http://localhost:8081/api/v1/courses/group-by-title')
-      .then((response) => {
-        if (response.status >= 400 && response.status < 600) {
-          throw new Error("Bad response from server");
-        }
-        return response.json();
-      })
-      .catch((error) => {
-        console.log(error)
-      });
+    // async function fetchFromAPI() { 
+    //   const courses = await fetch('http://localhost:8081/api/v1/courses/group-by-title')
+    //   .then((response) => {
+    //     if (response.status >= 400 && response.status < 600) {
+    //       throw new Error("Bad response from server");
+    //     }
+    //     return response.json();
+    //   })
+    //   .catch((error) => {
+    //     console.log(error)
+    //   });
   
-      return courses;
-    }
+    //   return courses;
+    // }
+
+    // // for the dev env
+    // function fetchFromFile() {
+    //   console.log('fetching from file');
+    //   console.log(jsonData);
+    //   return JSON.parse(JSON.stringify(jsonData));
+    // }
 
     fetchCourses();
   }, []);
+
+  /*
+    Why are we doing this? Isn't this redundant? Read:
+    https://stackoverflow.com/questions/54069253/usestate-set-method-not-reflecting-change-immediately
+  */
+  useEffect(() => {
+    setSchedule(schedule);
+  },[schedule]);
 
   return (
     <div className='page-container'>
@@ -71,6 +106,8 @@ const Home =  () => {
           <TabPanel value="2">Item Two</TabPanel>
         </TabContext>
       </Box>
+
+      <FullScreenDialog scheduleProp={schedule} handleRemoveCourseFromSchedule={handleRemoveCourseFromSchedule}/>
     </div>
   );
 }

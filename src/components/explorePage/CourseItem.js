@@ -7,6 +7,7 @@ const CourseItem = ({course, courseSections, handleAddCourse}) => {
 
   const handleClick = () => {
     setExpanded(!expanded);
+    // console.log(courseSections);
   }
 
   return (

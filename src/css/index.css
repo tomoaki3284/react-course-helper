@@ -26,3 +26,20 @@
   padding-right: 5rem !important;
 }
 
+.fab {
+  border-radius: 50% !important;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+
+}
+
+.fab-button {
+  border-radius: 50% !important;
+  background-color: rgb(91, 128, 248) !important;
+}
+
+.schedule-icon {
+  content: url('../asset/images/icons8-schedule.png');
+}
+
