@@ -11,6 +11,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import FullScreenDialog from './components/FullScreenDialog';
+import ScheduleCalendar from './components/SchedulePage/scheduleCalendar';
 
 const Home =  () => {
   const [value, setValue] = React.useState('1');
@@ -18,7 +19,9 @@ const Home =  () => {
   const [schedule, setSchedule] = React.useState([]);
 
   const handleAddCourse = (course) => {
-    setSchedule(prevState => [...prevState, course]);
+    setSchedule(prevState => {
+      return prevState.indexOf(course) >= 0 ? prevState : [...prevState, course];
+    });
   }
 
   const handleRemoveCourseFromSchedule = (course) => {
@@ -45,7 +48,7 @@ const Home =  () => {
       const arr = await require('./asset/current-semester.json');
       const courseMap = new Map();
       arr.forEach(course => {
-        if (courseMap.get(course.title) == undefined) {
+        if (courseMap.get(course.title) === undefined) {
           courseMap.set(course.title, [course]);
         } else {
           courseMap.get(course.title).push(course);
@@ -103,7 +106,9 @@ const Home =  () => {
           <TabPanel value="1">
             <ExplorePage coursesMapByTitleProp={coursesMapByTitle} handleAddCourse={handleAddCourse}/>
           </TabPanel>
-          <TabPanel value="2">Item Two</TabPanel>
+          <TabPanel value="2">
+            <ScheduleCalendar schedule={schedule}/>
+          </TabPanel>
         </TabContext>
       </Box>
 

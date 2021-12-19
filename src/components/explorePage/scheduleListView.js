@@ -16,7 +16,6 @@ const ScheduleListView = ({coursesMapByTitle, handleAddCourse}) => {
    */
   const courseMapToArray = () => {
     let arr = [];
-    console.log(filteredCourseMap);
     for (let title of Object.keys(filteredCourseMap)) {
       const courses = filteredCourseMap[title];
       arr.push({title, courses});
