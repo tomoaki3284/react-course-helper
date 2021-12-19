@@ -21,7 +21,6 @@ const CourseSectionTable = ({ courseSections, handleAddCourse }) => {
             handleAddCourse={handleAddCourse}
             course={data[row.id]}
           />
-          
         ),
       },
       {

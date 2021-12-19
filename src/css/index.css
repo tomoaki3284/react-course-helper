@@ -30,8 +30,7 @@
   border-radius: 50% !important;
   position: fixed;
   bottom: 40px;
-  right: 40px;
-
+  /* right: 40px; */
 }
 
 .fab-button {

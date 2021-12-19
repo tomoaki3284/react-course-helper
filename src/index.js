@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import './css/index.css';
+// import './css/index.css';
 import Navbar from './components/navbar';
 import ExplorePage from './components/explorePage/ExplorePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -110,8 +110,8 @@ const Home =  () => {
         <TabContext value={value}>
           <Box className='tab-container' sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <TabList onChange={handleChange} aria-label="lab API tabs example">
-              <Tab label="Course Explorer" value="1"/>
-              <Tab label="Schedule Visualizer" value="2"/>
+              <Tab label="Courses" value="1"/>
+              <Tab label="Schedule" value="2"/>
             </TabList>
           </Box>
           <TabPanel value="1">
