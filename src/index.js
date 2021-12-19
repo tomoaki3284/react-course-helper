@@ -18,10 +18,21 @@ const Home =  () => {
   const [coursesMapByTitle, setCoursesMapByTitle] = React.useState(null);
   const [schedule, setSchedule] = React.useState([]);
 
+  /**
+   * 
+   * Return true if course has been added. False if not (duplicate course exist)
+   * 
+   * @return boolean
+   * @param {*} course 
+   */
   const handleAddCourse = (course) => {
+    let added = false;
     setSchedule(prevState => {
-      return prevState.indexOf(course) >= 0 ? prevState : [...prevState, course];
+      let duplicate = prevState.indexOf(course) >= 0;
+      added = !duplicate;
+      return duplicate ? prevState : [...prevState, course];
     });
+    return added;
   }
 
   const handleRemoveCourseFromSchedule = (course) => {

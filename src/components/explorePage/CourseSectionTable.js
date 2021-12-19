@@ -1,6 +1,8 @@
 import React from "react";
 import { useTable } from 'react-table'
-import '../../css/courseSectionTable.css';
+import '../../css/courseSectionTable.css';  
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CourseSectionTable = ({ courseSections, handleAddCourse }) => {
   const data = React.useMemo(
@@ -14,9 +16,12 @@ const CourseSectionTable = ({ courseSections, handleAddCourse }) => {
         Header: () => null, // No header
         id: 'addButton', // It needs an ID
         Cell: ({ row }) => (
-          <img className='course-add-button' alt='course-add-button' onClick={(event) => {
-            handleAddCourse(data[row.id]);
-          }} />
+          <AddButton 
+            alt='course-add-button'
+            handleAddCourse={handleAddCourse}
+            course={data[row.id]}
+          />
+          
         ),
       },
       {
@@ -48,6 +53,36 @@ const CourseSectionTable = ({ courseSections, handleAddCourse }) => {
       <Table columns={columns} data={data} />
     </div>
   )
+}
+
+function AddButton({ handleAddCourse, course }){
+  const notify = () => toast.success("Class Added!");
+  const notifyNegative = () => toast.error("Class is already added!");
+
+  return (
+    <div>
+      <img onClick={() => {
+        let added = handleAddCourse(course);
+        if (added) {
+          notify();
+        } else {
+          notifyNegative();
+        }
+      }} className='course-add-button'/>
+      <ToastContainer 
+        position="bottom-center"
+        autoClose={5000}
+        type="success"
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    </div>
+  );
 }
 
 const Table = ({ columns, data }) => {

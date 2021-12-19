@@ -35,4 +35,5 @@ th {
 
 .course-add-button {
   content: url('../asset/images/icons8-calendar_plus.png');
+  padding-left: 1rem;
 }
