@@ -47,39 +47,62 @@ const CourseSectionTable = ({ courseSections, handleAddCourse }) => {
     []
   )
 
+  const notify = () => toast.success("Class Added!");
+  const notifyNegative = () => toast.error("Class is already added!");
+
+  const addCourse = (course) => {
+    let added = handleAddCourse(course);
+    if (added) {
+      notify();
+    } else {
+      notifyNegative();
+    }
+  }
+
   return (
     <div className='table-container'>
       <Table columns={columns} data={data} />
+      <div className='small-table-container'>
+      {
+        courseSections.map((course) => {
+          return (
+            <div className='small-table-container__course-cell-small'>
+              <p><span className='header-cell-small'>CRN: </span>{course.courseCRN}</p>
+              <p><span className='header-cell-small'>PROFESSOR: </span>{course.faculty}</p>
+              <p><span className='header-cell-small'>TIME: </span>{course.timeContent}</p>
+              <p><span className='header-cell-small'>ROOM: </span>{course.room}</p>
+              <p><span className='header-cell-small'>CREDIT: </span>{course.credit}</p>
+              <ToastContainer 
+                position="top-center"
+                autoClose={5000}
+                type="success"
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+              />
+              <div className='add-button-wrapper' onClick={() => {addCourse(course);}}>
+                <AddImage/>
+                ADD
+              </div>
+              <hr/>
+            </div>
+          );
+        })
+      }
+      </div>
+      
     </div>
   )
 }
 
-function AddButton({ handleAddCourse, course }){
-  const notify = () => toast.success("Class Added!");
-  const notifyNegative = () => toast.error("Class is already added!");
-
+function AddImage({ handleAddCourse, course, notify, notifyNegative }){
   return (
     <div>
-      <img onClick={() => {
-        let added = handleAddCourse(course);
-        if (added) {
-          notify();
-        } else {
-          notifyNegative();
-        }
-      }} className='course-add-button'/>
-      <ToastContainer 
-        position="bottom-center"
-        autoClose={5000}
-        type="success"
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+      <img className='course-add-button'/>
     </div>
   );
 }
@@ -109,7 +132,7 @@ const Table = ({ columns, data }) => {
           </tr>
         ))}
       </thead>
-      <tbody {...getTableBodyProps()}>
+      <tbody className='table-body' {...getTableBodyProps()}>
         {rows.map((row, i) => {
           prepareRow(row)
           return (

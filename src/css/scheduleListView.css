@@ -1,5 +1,13 @@
 .classList {
-  margin-left: 6rem;
+  margin-left: 3rem;
   margin-top: 100px;
   max-width: 800px;
+}
+
+/* browser's width is 600px wide or less: */
+@media screen and (max-width: 920px) {
+  .classList {
+    margin-left: auto;
+    max-width: 360px;
+  }
 }

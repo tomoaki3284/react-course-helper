@@ -1,0 +1,32 @@
+.filter-button-img {
+  content: url('../asset/images/icons8-filter.png');
+  height: 1.4rem;
+  width: 1.4rem;
+}
+
+.filter-button {
+  height: 4rem;
+  background-color: #1976d2 !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 0 !important; 
+  visibility: hidden;
+}
+
+body {
+  padding: 0px !important;
+}
+
+/* browser's width is 600px wide or less: */
+@media screen and (max-width: 920px) {
+  .filter-button {
+    visibility: visible;
+  }
+
+  .filter-dialog {
+    margin: 0;
+  }
+}

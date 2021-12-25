@@ -12,6 +12,13 @@
   padding-bottom: 0.6rem;
   align-items: center;
   justify-content: space-between;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -webkit-hyphens: auto; /* iOS 4.2+ */
+  -moz-hyphens: auto; /* Firefox 5+ */
+  -ms-hyphens: auto; /* IE 10+ */
+  hyphens: auto;
+  word-break: break-all;
 }
 
 .course__title:hover {
@@ -39,4 +46,21 @@
   width: 25px;
   float: right;
   padding-right: 35px;
+}
+
+/* browser's width is 600px wide or less: */
+@media screen and (max-width: 500px) {
+  .course {
+    margin-left: 1.3rem;
+    margin-right: 1.3rem;
+  }
+
+  .course__title {
+    font-size: 20px;
+    padding: 1rem;
+  }
+
+  .course__description {
+    font-size: 15px;
+  }
 }

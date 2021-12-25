@@ -1,11 +1,12 @@
 #mynavbar {
   max-width: 100%;
   padding: 0;
+  background-color: black;
 }
 
 .wsu-logo {
   content: url('../asset/images/wsu-logo.png');
-  width: 8rem;
+  width: 7rem;
   margin: 0.5rem;
 }
 
@@ -19,4 +20,15 @@
 a {
   color: black !important;
   text-decoration: none !important; /* no underline */
+}
+
+/* browser's width is 600px wide or less: */
+@media screen and (max-width: 920px) {
+  .nav-links {
+    visibility: collapse;
+  }
+
+  a {
+    visibility: collapse;
+  }
 }

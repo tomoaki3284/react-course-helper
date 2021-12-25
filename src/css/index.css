@@ -26,19 +26,15 @@
   padding-right: 5rem !important;
 }
 
-.fab {
-  border-radius: 50% !important;
-  position: fixed;
-  bottom: 40px;
-  /* right: 40px; */
-}
+/* browser's width is 600px wide or less: */
+@media screen and (max-width: 920px) {
+  .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
 
-.fab-button {
-  border-radius: 50% !important;
-  background-color: rgb(91, 128, 248) !important;
-}
-
-.schedule-icon {
-  content: url('../asset/images/icons8-schedule.png');
+  .css-13xfq8m-MuiTabPanel-root {
+    padding: 0 !important;
+  }
 }
 

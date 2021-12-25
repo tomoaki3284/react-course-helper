@@ -1,5 +1,5 @@
 .filter-header {
-  top: 5rem;
+  top: 4rem;
   display: flex;
   flex-direction: column;
   width: max-content;
@@ -7,6 +7,9 @@
   align-items: flex-start;
   position: -webkit-sticky; /* Safari */
   position: sticky;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 4rem;
 }
 
 .filter-header__combobox {
@@ -21,4 +24,15 @@
   margin-bottom: 1.5rem;
   color: #A3A3A3;
   border-bottom: 1px solid #888888;
+}
+
+/* browser's width is 600px wide or less: */
+@media screen and (max-width: 700px) {
+  .filter-header {
+    width: auto;
+  }
+
+  .filter-header__combobox {
+    width: 200px !important;
+  }
 }

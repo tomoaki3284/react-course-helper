@@ -2,7 +2,31 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  max-width: 100%;
-  margin-left: 8rem;
-  margin-right: 8rem;
+}
+
+.float_filter_viewer_button_group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 2.5rem;
+  right: 40px;
+}
+
+/* browser's width is 600px wide or less: */
+@media screen and (max-width: 920px) {
+  .float_filter_viewer_button_group {
+    bottom: 1rem;
+    right: auto;
+    width: 10rem;
+  }
+
+  .explore-container {
+    justify-content: center;
+  }
+
+  .filter-group-container {
+    width: 0;
+    visibility: hidden;
+  }
 }

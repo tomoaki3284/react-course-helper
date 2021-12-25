@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import Fab from '@mui/material/Fab';
+import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import ListItemText from '@mui/material/ListItemText';
 import ListItem from '@mui/material/ListItem';
@@ -13,6 +13,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
 import Box from '@mui/material/Box';
 import AlertDialog from './AlertDialog';
+
+import '../css/FullScreenDialog.css';
 
 const Transition = React.forwardRef((props, ref) => {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -36,12 +38,10 @@ const FullScreenDialog = ({ scheduleProp, handleRemoveCourseFromSchedule }) => {
   };
 
   return schedule !== null ? (
-    <div>
-      <Box sx={{ '& > :not(style)': { m: 1 } }} className='fab'>
-        <Fab color="primary" aria-label="add" className='fab-button' onClick={handleClickOpen}>
-          <img alt='schedule-icon' className='schedule-icon' />
-        </Fab>
-      </Box>
+    <div className='full-screen-adilog-container'>
+      <Button color="primary" aria-label="add" className='schedule-button' onClick={handleClickOpen}>
+        <img className='schedule-button'/>
+      </Button>
       <Dialog
         fullScreen
         open={open}

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
-// import './css/index.css';
+import './css/index.css';
 import Navbar from './components/navbar';
 import ExplorePage from './components/explorePage/ExplorePage';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,7 +10,6 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import FullScreenDialog from './components/FullScreenDialog';
 import ScheduleCalendar from './components/SchedulePage/scheduleCalendar';
 
 const Home =  () => {
@@ -115,15 +114,13 @@ const Home =  () => {
             </TabList>
           </Box>
           <TabPanel value="1">
-            <ExplorePage coursesMapByTitleProp={coursesMapByTitle} handleAddCourse={handleAddCourse}/>
+            <ExplorePage coursesMapByTitleProp={coursesMapByTitle} handleAddCourse={handleAddCourse} scheduleProp={schedule} handleRemoveCourseFromSchedule={handleRemoveCourseFromSchedule}/>
           </TabPanel>
           <TabPanel value="2">
             <ScheduleCalendar schedule={schedule}/>
           </TabPanel>
         </TabContext>
       </Box>
-
-      <FullScreenDialog scheduleProp={schedule} handleRemoveCourseFromSchedule={handleRemoveCourseFromSchedule}/>
     </div>
   );
 }

@@ -1,7 +1,8 @@
 .table-container {
   background-color: #ECF5FC;
   display: flex;
-  width: 100%;
+  flex-direction: column;
+  /* width: 100%; */
   margin-top: 2rem;
 }
 
@@ -36,4 +37,60 @@ th {
 .course-add-button {
   content: url('../asset/images/icons8-calendar_plus.png');
   padding-left: 1rem;
+}
+
+.small-table-container {
+  visibility: hidden;
+  background-color: #ECF5FC;
+  height: 0;
+}
+
+hr {
+  margin: 0px !important;
+  margin-bottom: 0px;
+}
+
+/* browser's width is 600px wide or less: */
+@media screen and (max-width: 500px) {
+  .table-container {
+    font-size: 15px;
+    visibility: collapse;
+  }
+
+  table {
+    border-spacing: 0;
+    width: 0px;
+  }
+
+  .add-button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5.5rem;
+    height: 3rem;
+    padding-right: 1rem;
+    background: white;
+    border-radius: 10%;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+  }
+
+  .course__title {
+    font-size: 20px;
+    padding: 1rem;
+  }
+
+  .course__description {
+    font-size: 15px;
+  }
+
+  .small-table-container {
+    visibility: visible;
+    height: auto;
+  }
+
+  .header-cell-small {
+    color: #888888;
+    margin-left: 1rem;
+  }
 }
