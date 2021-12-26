@@ -4,6 +4,7 @@ import {
   Scheduler,
   WeekView,
   Appointments,
+  AppointmentTooltip,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { ViewState } from '@devexpress/dx-react-scheduler';
 import AppointmentData from '../../controller/AppointmentData';
@@ -24,6 +25,7 @@ const ScheduleCalendar = (schedule) => {
         />
         <WeekView startDayHour={6} endDayHour={19} excludedDays={[0, 6]}/>
         <Appointments />
+        <AppointmentTooltip />
       </Scheduler>
     </Paper>
   );

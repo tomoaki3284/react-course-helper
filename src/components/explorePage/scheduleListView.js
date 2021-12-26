@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CourseItem from './CourseItem';
 import '../../css/scheduleListView.css';
+import LazyLoad from 'react-lazyload';
 
 const ScheduleListView = ({coursesMapByTitle, handleAddCourse}) => {
   const [filteredCourseMap, setFilteredCourseMap] = useState(coursesMapByTitle);
@@ -23,6 +24,12 @@ const ScheduleListView = ({coursesMapByTitle, handleAddCourse}) => {
     return arr;
   };
 
+  const Spinner = () => (
+    <div className='loading'>
+      <h5>Loading...</h5>
+    </div>
+  );
+
   const render = () => {
     if (filteredCourseMap !== null && filteredCourseMap !== undefined && filteredCourseMap.size !== 0) {
       const courses = courseMapToArray();
@@ -33,7 +40,11 @@ const ScheduleListView = ({coursesMapByTitle, handleAddCourse}) => {
             Object.entries(courses).map(([index, courseObj]) => {
               const title = courseObj["title"];
               const cs = courseObj["courses"];
-              return <CourseItem key={title} course={cs[0]} courseSections={cs} handleAddCourse={handleAddCourse}/>
+              return (
+                <LazyLoad placeholder={<Spinner />} key={title} offset={[-100,100]}>
+                  <CourseItem key={title} course={cs[0]} courseSections={cs} handleAddCourse={handleAddCourse}/>
+                </LazyLoad>
+              );
             })
           }
         </div>

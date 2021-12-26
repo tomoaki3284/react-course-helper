@@ -4,10 +4,22 @@ import '../../css/courseSectionTable.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+const notify = () => toast.success("Class Added!");
+const notifyNegative = () => toast.error("Class is already added!");
+
 const CourseSectionTable = ({ courseSections, handleAddCourse }) => {
   const data = React.useMemo(
     () => courseSections, [courseSections]
   )
+
+  const addCourse = (course) => {
+    let added = handleAddCourse(course);
+    if (added) {
+      notify();
+    } else {
+      notifyNegative();
+    }
+  }
 
   const columns = React.useMemo(
     () => [
@@ -16,11 +28,15 @@ const CourseSectionTable = ({ courseSections, handleAddCourse }) => {
         Header: () => null, // No header
         id: 'addButton', // It needs an ID
         Cell: ({ row }) => (
-          <AddButton 
-            alt='course-add-button'
-            handleAddCourse={handleAddCourse}
-            course={data[row.id]}
-          />
+          <div 
+            className='add-button-wrapper'
+            onClick={() => {
+              console.log('ahhh2');
+              addCourse(row.id);
+            }
+          }>
+            <AddImage/>
+          </div>
         ),
       },
       {
@@ -47,18 +63,6 @@ const CourseSectionTable = ({ courseSections, handleAddCourse }) => {
     []
   )
 
-  const notify = () => toast.success("Class Added!");
-  const notifyNegative = () => toast.error("Class is already added!");
-
-  const addCourse = (course) => {
-    let added = handleAddCourse(course);
-    if (added) {
-      notify();
-    } else {
-      notifyNegative();
-    }
-  }
-
   return (
     <div className='table-container'>
       <Table columns={columns} data={data} />
@@ -66,12 +70,21 @@ const CourseSectionTable = ({ courseSections, handleAddCourse }) => {
       {
         courseSections.map((course) => {
           return (
-            <div className='small-table-container__course-cell-small'>
+            <div className='small-table-container__course-cell-small' key={course.courseCRN}>
               <p><span className='header-cell-small'>CRN: </span>{course.courseCRN}</p>
               <p><span className='header-cell-small'>PROFESSOR: </span>{course.faculty}</p>
               <p><span className='header-cell-small'>TIME: </span>{course.timeContent}</p>
               <p><span className='header-cell-small'>ROOM: </span>{course.room}</p>
               <p><span className='header-cell-small'>CREDIT: </span>{course.credit}</p>
+              <div 
+                className='add-button-wrapper'
+                onClick={() => {
+                  console.log('ahhh1');
+                  addCourse(course);
+              }}>
+                <AddImage/>
+                ADD
+              </div>
               <ToastContainer 
                 position="top-center"
                 autoClose={5000}
@@ -84,10 +97,6 @@ const CourseSectionTable = ({ courseSections, handleAddCourse }) => {
                 draggable
                 pauseOnHover
               />
-              <div className='add-button-wrapper' onClick={() => {addCourse(course);}}>
-                <AddImage/>
-                ADD
-              </div>
               <hr/>
             </div>
           );

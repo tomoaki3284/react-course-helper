@@ -37,6 +37,7 @@ th {
 .course-add-button {
   content: url('../asset/images/icons8-calendar_plus.png');
   padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .small-table-container {
@@ -50,7 +51,21 @@ hr {
   margin-bottom: 0px;
 }
 
+.add-button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+}
+
 /* browser's width is 600px wide or less: */
+@media screen and (max-width: 700px) {
+  .table-container {
+    font-size: 12px;
+  }
+}
+
+/* browser's width is 500px wide or less: */
 @media screen and (max-width: 500px) {
   .table-container {
     font-size: 15px;

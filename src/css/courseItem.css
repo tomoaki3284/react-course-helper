@@ -64,3 +64,10 @@
     font-size: 15px;
   }
 }
+
+/* browser's width is 600px wide or less: */
+@media screen and (max-width: 374px) {
+  .course__description {
+    word-break: break-all;
+  }
+}

@@ -1,15 +1,12 @@
 .filter-header {
-  top: 4rem;
   display: flex;
   flex-direction: column;
   width: max-content;
-  margin-top: 5rem;
+  margin-top: 4rem;
   align-items: flex-start;
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
   padding-left: 2rem;
   padding-right: 2rem;
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
 }
 
 .filter-header__combobox {
@@ -26,10 +23,12 @@
   border-bottom: 1px solid #888888;
 }
 
-/* browser's width is 600px wide or less: */
+/* browser's width is 700px wide or less: */
 @media screen and (max-width: 700px) {
   .filter-header {
     width: auto;
+    margin-top: 0rem;
+    padding-top: 2rem;
   }
 
   .filter-header__combobox {
