@@ -50,7 +50,8 @@ const Home =  () => {
     async function fetchCourses() {
       // GET request using fetch with async/await
 
-      // for prod
+      // // for prod
+      // const SERVER_URL = process.env.REACT_APP_SERVER_URL;
       // const courseMap = await fetchFromAPI();
       // setCoursesMapByTitle(courseMap);
 
@@ -65,30 +66,22 @@ const Home =  () => {
         }
       });
       setCoursesMapByTitle(Object.fromEntries(courseMap));
-      console.log("api called");
     }
 
-    // async function fetchFromAPI() { 
-    //   const courses = await fetch('http://localhost:8081/api/v1/courses/group-by-title')
-    //   .then((response) => {
-    //     if (response.status >= 400 && response.status < 600) {
-    //       throw new Error("Bad response from server");
-    //     }
-    //     return response.json();
-    //   })
-    //   .catch((error) => {
-    //     console.log(error)
-    //   });
+    async function fetchFromAPI() { 
+      const courses = await fetch('http://localhost:8081/api/v1/courses/group-by-title')
+      .then((response) => {
+        if (response.status >= 400 && response.status < 600) {
+          throw new Error("Bad response from server");
+        }
+        return response.json();
+      }) 
+      .catch((error) => {
+        console.log(error)
+      });
   
-    //   return courses;
-    // }
-
-    // // for the dev env
-    // function fetchFromFile() {
-    //   console.log('fetching from file');
-    //   console.log(jsonData);
-    //   return JSON.parse(JSON.stringify(jsonData));
-    // }
+      return courses;
+    }
 
     fetchCourses();
   }, []);

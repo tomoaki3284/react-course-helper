@@ -79,7 +79,6 @@ const CourseSectionTable = ({ courseSections, handleAddCourse }) => {
               <div 
                 className='add-button-wrapper'
                 onClick={() => {
-                  console.log('ahhh1');
                   addCourse(course);
               }}>
                 <AddImage/>

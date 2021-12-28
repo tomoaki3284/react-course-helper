@@ -24,7 +24,6 @@ const ExplorePage = ({coursesMapByTitleProp, handleAddCourse, scheduleProp, hand
 
     courseFilter.setFilter(filterTitle, newValue);
     const newFilteredCourseMap = courseFilter.filterCourse(coursesMapByTitle);
-    console.log(newFilteredCourseMap);
     setFilteredCourseMap(newFilteredCourseMap);
   }
 
