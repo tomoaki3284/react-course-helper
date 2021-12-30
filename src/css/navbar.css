@@ -26,6 +26,7 @@ a {
 @media screen and (max-width: 920px) {
   .nav-links {
     visibility: collapse;
+    display: none;
   }
 
   a {
