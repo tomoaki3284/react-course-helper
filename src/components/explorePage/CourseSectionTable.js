@@ -4,9 +4,6 @@ import '../../css/courseSectionTable.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const notify = () => toast.success("Class Added!");
-const notifyNegative = () => toast.error("Class is already added!");
-
 const CourseSectionTable = ({ courseSections, handleAddCourse }) => {
   const data = React.useMemo(
     () => courseSections, [courseSections]
@@ -21,6 +18,9 @@ const CourseSectionTable = ({ courseSections, handleAddCourse }) => {
     }
   }
 
+  const notify = () => toast.success("Class Added!");
+  const notifyNegative = () => toast.error("Class is already added!");
+
   const columns = React.useMemo(
     () => [
       {
@@ -28,14 +28,17 @@ const CourseSectionTable = ({ courseSections, handleAddCourse }) => {
         Header: () => null, // No header
         id: 'addButton', // It needs an ID
         Cell: ({ row }) => (
-          <div 
-            className='add-button-wrapper'
-            onClick={() => {
-              addCourse(row.original);
-            }
-          }>
-            <AddImage/>
+          <div>
+            <div 
+              className='add-button-wrapper'
+              onClick={() => {
+                addCourse(row.original);
+              }
+            }>
+              <AddImage/>
+            </div>
           </div>
+          
         ),
       },
       {
@@ -83,18 +86,6 @@ const CourseSectionTable = ({ courseSections, handleAddCourse }) => {
                 <AddImage/>
                 ADD
               </div>
-              <ToastContainer 
-                position="top-center"
-                autoClose={5000}
-                type="success"
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-              />
               <hr/>
             </div>
           );

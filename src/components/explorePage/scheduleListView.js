@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CourseItem from './CourseItem';
 import '../../css/scheduleListView.css';
 import LazyLoad from 'react-lazyload';
+import { ToastContainer } from 'react-toastify';
 
 const ScheduleListView = ({coursesMapByTitle, handleAddCourse}) => {
   const [filteredCourseMap, setFilteredCourseMap] = useState(coursesMapByTitle);
@@ -36,6 +37,21 @@ const ScheduleListView = ({coursesMapByTitle, handleAddCourse}) => {
 
       return (
         <div className="classList">
+        {/* Toast is declare here. Because if each courseItem/courseSectionTable has Toast, number of courseItem/courseSectionTable toast would be generated.
+        All we want to have is one toast to be generated when user add course. By declaring it here, it will generate only one+shared toast, becasue shceduleListView
+        only exist one */}
+        <ToastContainer 
+                position="top-center"
+                autoClose={5000}
+                type="success"
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+              />
           {
             Object.entries(courses).map(([index, courseObj]) => {
               const title = courseObj["title"];
