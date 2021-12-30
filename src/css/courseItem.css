@@ -1,7 +1,8 @@
 .course {
   display: flex;
   display: block;
-  margin-bottom: 60px;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid #888888;
 }
 
 .course__title {
@@ -30,6 +31,7 @@
 .course__description {
   font-size: 16px;
   color: #4d4d4d;
+  margin-bottom: 2rem;
 }
 
 .course__categories {
@@ -58,11 +60,17 @@
 
   .course__title {
     font-size: 20px;
-    padding: 1rem;
+    padding: 0.5rem;
+    
   }
 
   .course__description {
     font-size: 15px;
+  }
+
+  .course__plus-icon {
+    padding-right: 0;
+    padding-left: 1rem;
   }
 }
 

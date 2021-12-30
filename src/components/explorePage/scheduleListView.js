@@ -57,7 +57,7 @@ const ScheduleListView = ({coursesMapByTitle, handleAddCourse}) => {
               const title = courseObj["title"];
               const cs = courseObj["courses"];
               return (
-                <LazyLoad placeholder={<Spinner />} key={title} offset={[-100,100]}>
+                <LazyLoad placeholder={<Spinner />} key={title}>
                   <CourseItem key={title} course={cs[0]} courseSections={cs} handleAddCourse={handleAddCourse}/>
                 </LazyLoad>
               );

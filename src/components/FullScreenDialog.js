@@ -74,8 +74,8 @@ const FullScreenDialog = ({ scheduleProp, handleRemoveCourseFromSchedule }) => {
           {
             schedule.map((course) => {
               return <div>
-                <ListItem button>
-                  <ListItemText primary={course.title + " -- " + course.courseCRN} secondary={course.timeContent} />
+                <ListItem>
+                  <ListItemText primary={course.title} secondary={course.courseCRN}/>
                   <AlertDialog 
                     positiveCallback={handleRemoveCourseFromSchedule} 
                     negativeCallback={(e) => {}} 

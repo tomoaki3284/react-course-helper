@@ -72,12 +72,12 @@ const CourseSectionTable = ({ courseSections, handleAddCourse }) => {
       {
         courseSections.map((course) => {
           return (
-            <div className='small-table-container__course-cell-small' key={course.courseCRN}>
-              <p><span className='header-cell-small'>CRN: </span>{course.courseCRN}</p>
-              <p><span className='header-cell-small'>PROFESSOR: </span>{course.faculty}</p>
-              <p><span className='header-cell-small'>TIME: </span>{course.timeContent}</p>
-              <p><span className='header-cell-small'>ROOM: </span>{course.room}</p>
-              <p><span className='header-cell-small'>CREDIT: </span>{course.credit}</p>
+            <div className='small-table-container__wrapper' key={course.courseCRN}>
+              <p className='small-table-cell'><span className='small-table-header'>CRN</span>{course.courseCRN}</p>
+              <p className='small-table-cell'><span className='small-table-header'>PROFESSOR</span>{course.faculty}</p>
+              <p className='small-table-cell'><span className='small-table-header'>TIME</span>{course.timeContent}</p>
+              <p className='small-table-cell'><span className='small-table-header'>ROOM</span>{course.room}</p>
+              <p className='small-table-cell'><span className='small-table-header'>CREDIT</span>{course.credit}</p>
               <div 
                 className='add-button-wrapper'
                 onClick={() => {

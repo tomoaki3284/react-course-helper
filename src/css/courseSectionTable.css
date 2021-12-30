@@ -1,5 +1,5 @@
 .table-container {
-  background-color: #ECF5FC;
+  background-color: rgb(247, 247, 247);
   display: flex;
   flex-direction: column;
   /* width: 100%; */
@@ -42,7 +42,7 @@ th {
 
 .small-table-container {
   visibility: hidden;
-  background-color: #ECF5FC;
+  background-color: rgb(247, 247, 247);
   height: 0;
 }
 
@@ -76,35 +76,47 @@ hr {
     display: none;
   }
 
-  .add-button-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 5.5rem;
-    height: 3rem;
-    padding-right: 1rem;
-    background: white;
-    border-radius: 10%;
-    margin-bottom: 1rem;
-    margin-left: 1rem;
-  }
-
-  .course__title {
-    font-size: 20px;
-    padding: 1rem;
-  }
-
-  .course__description {
-    font-size: 15px;
-  }
-
   .small-table-container {
     visibility: visible;
     height: auto;
   }
 
-  .header-cell-small {
+  .add-button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5.5rem;
+    height: 2.5rem;
+    font-weight: 100;
+    background: white;
+    border-radius: 10%;
+    margin-bottom: 1rem;
+    padding-right: 1rem;
+  }
+
+  .course-add-button {
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+  }
+
+  .small-table-container__wrapper{
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 14px;
+  }
+
+  .small-table-cell {
+    display: flex;
+    flex-direction: column;
+    font-weight: 100;
+  }
+
+  .small-table-header {
     color: #888888;
-    margin-left: 1rem;
+    font-size: 11px;
+    font-weight: 300;
   }
 }
