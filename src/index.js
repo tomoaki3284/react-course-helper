@@ -76,7 +76,6 @@ const Home =  () => {
           console.log(response.status);
           throw new Error("Bad response from server");
         }
-        console.log(response);
         return response.json();
       }) 
       .catch((error) => {
