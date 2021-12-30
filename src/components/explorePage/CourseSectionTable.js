@@ -120,7 +120,7 @@ const Table = ({ columns, data }) => {
 
   // Render the UI for your table
   return (
-    <table {...getTableProps()}>
+    <table className='normal-section-table' {...getTableProps()}>
       <thead className="table-header">
         {headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>

@@ -1,5 +1,6 @@
 .course {
-  display: flex block;
+  display: flex;
+  display: block;
   margin-bottom: 60px;
 }
 
