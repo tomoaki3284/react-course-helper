@@ -105,8 +105,8 @@ const Home =  () => {
         <TabContext value={value}>
           <Box className='tab-container' sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <TabList onChange={handleChange} aria-label="lab API tabs example">
-              <Tab label="Courses" value="1"/>
-              <Tab label="Schedule" value="2"/>
+              <Tab label="Courses" value="1" className='tab-button'/>
+              <Tab label="Schedule" value="2" className='tab-button'/>
             </TabList>
           </Box>
           <TabPanel value="1">

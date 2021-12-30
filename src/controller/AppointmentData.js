@@ -2,8 +2,6 @@ class AppointmentData {
   
 
   constructor({ schedule }) {
-    console.log(schedule);
-
     if (schedule === null || schedule === undefined || schedule.length === 0) return;
 
     // for 2021 Nov, because 2021 Nov 1st is staring from Monday so convinient
