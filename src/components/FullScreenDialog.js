@@ -11,7 +11,6 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
-import Box from '@mui/material/Box';
 import AlertDialog from './AlertDialog';
 
 import '../css/FullScreenDialog.css';
@@ -37,6 +36,14 @@ const FullScreenDialog = ({ scheduleProp, handleRemoveCourseFromSchedule }) => {
     setOpen(true);
   };
 
+  const countCredit = () => {
+    let credits = 0;
+    schedule.forEach(course => {
+      credits += course.credit;
+    }); 
+    return credits;
+  }
+
   return schedule !== null ? (
     <div className='full-screen-adilog-container'>
       <Button color="primary" aria-label="add" className='schedule-button' onClick={handleClickOpen}>
@@ -59,7 +66,7 @@ const FullScreenDialog = ({ scheduleProp, handleRemoveCourseFromSchedule }) => {
               <CloseIcon />
             </IconButton>
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-              Your Schedule
+              Your Schedule -- total credits: {countCredit()}
             </Typography>
           </Toolbar>
         </AppBar>
