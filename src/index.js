@@ -11,6 +11,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import ScheduleCalendar from './components/SchedulePage/scheduleCalendar';
+import { properties } from './properties.js';
 
 const Home =  () => {
   const [value, setValue] = React.useState('1');
@@ -50,30 +51,32 @@ const Home =  () => {
     async function fetchCourses() {
       // GET request using fetch with async/await
 
-      // // for prod
-      // const SERVER_URL = process.env.REACT_APP_SERVER_URL;
-      // const courseMap = await fetchFromAPI();
-      // setCoursesMapByTitle(courseMap);
+      // for prod
+      const SERVER_URL = properties.REACT_APP_SERVER_URL;
+      const courseMap = await fetchFromAPI(SERVER_URL);
+      setCoursesMapByTitle(courseMap);
 
-      // for dev
-      const arr = await require('./asset/current-semester.json');
-      const courseMap = new Map();
-      arr.forEach(course => {
-        if (courseMap.get(course.title) === undefined) {
-          courseMap.set(course.title, [course]);
-        } else {
-          courseMap.get(course.title).push(course);
-        }
-      });
-      setCoursesMapByTitle(Object.fromEntries(courseMap));
+      // // for dev
+      // const arr = await require('./asset/current-semester.json');
+      // const courseMap = new Map();
+      // arr.forEach(course => {
+      //   if (courseMap.get(course.title) === undefined) {
+      //     courseMap.set(course.title, [course]);
+      //   } else {
+      //     courseMap.get(course.title).push(course);
+      //   }
+      // });
+      // setCoursesMapByTitle(Object.fromEntries(courseMap));
     }
 
-    async function fetchFromAPI() { 
-      const courses = await fetch('http://localhost:8081/api/v1/courses/group-by-title')
+    async function fetchFromAPI(SERVER_URL) { 
+      const courses = await fetch(SERVER_URL)
       .then((response) => {
         if (response.status >= 400 && response.status < 600) {
+          console.log(response.status);
           throw new Error("Bad response from server");
         }
+        console.log(response);
         return response.json();
       }) 
       .catch((error) => {
