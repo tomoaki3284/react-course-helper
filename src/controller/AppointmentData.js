@@ -14,6 +14,7 @@ class AppointmentData {
     };
     this.datas = [];
 
+    // 
     schedule.forEach(course => {
       let hoursOfDay = course.hoursOfDay;
       if (hoursOfDay === null || hoursOfDay === undefined) return;
