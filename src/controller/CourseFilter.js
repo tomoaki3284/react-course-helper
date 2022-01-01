@@ -3,6 +3,7 @@ class CourseFilter {
     this.core = '';
     this.mode = '';
     this.subject = '';
+    this.title = '';
   }
 
   /**
@@ -21,8 +22,12 @@ class CourseFilter {
       this.core = newFilterValue;
     } else if (whichFilter === 'mode') {
       this.mode = newFilterValue;
-    } else {
+    } else if (whichFilter === 'subject') {
       this.subject = newFilterValue;
+    } else if (whichFilter === 'title') {
+      this.title = newFilterValue;
+    } else {
+      console.log('whichFilter is not applicable: ', whichFilter);
     }
   }
 
@@ -68,7 +73,8 @@ class CourseFilter {
       const course = courseEntry.courses[0];
       return (this.emptyString(this.core) || course.cores.includes(this.core) || this.core === 'Double Core') &&
              (this.emptyString(this.mode) || course.room.toLocaleLowerCase() === this.mode) &&
-             (this.emptyString(this.subject) || course.subject === this.subject);
+             (this.emptyString(this.subject) || course.subject === this.subject) &&
+             (this.emptyString(this.title) || course.title.toLowerCase().includes(this.title.toLowerCase()));
     })
     // then for each filtered course, add it to filteredCourseMap
     .forEach((filteredCourseEntry) => {
