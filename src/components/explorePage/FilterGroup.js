@@ -14,6 +14,7 @@ const FilterGroup = ({onInputChange}) => {
       <ComboBox filterTitle='core' filterArr={cores} onInputChange={onInputChange} />
       <ComboBox filterTitle='mode' filterArr={modes} onInputChange={onInputChange} />
       <ComboBox filterTitle='subject' filterArr={subjects} onInputChange={onInputChange} />
+      <CustomTextField filterTitle='title' onInputChange={onInputChange} />
     </div>
   );
 }
@@ -32,6 +33,17 @@ const ComboBox = ({filterArr, filterTitle, onInputChange}) => {
         renderInput={(params) =>
           <TextField {...params} label={filterTitle} variant="outlined" />}
       />
+    </div>
+  );
+}
+
+const CustomTextField = ({filterTitle, onInputChange}) => {
+  return (
+    <div>
+      <h6>{filterTitle}</h6>
+      <TextField id="outlined-basic" label="Outlined" variant="outlined" label={filterTitle} style={{ width: 250 }} type="search" onChange={(event) => {
+          onInputChange(event, event.target.value, filterTitle);
+        }} />
     </div>
   );
 }
