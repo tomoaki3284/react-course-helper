@@ -24,24 +24,6 @@ const CourseSectionTable = ({ courseSections, handleAddCourse }) => {
   const columns = React.useMemo(
     () => [
       {
-        // Make an expander cell
-        Header: () => null, // No header
-        id: 'addButton', // It needs an ID
-        Cell: ({ row }) => (
-          <div>
-            <div 
-              className='add-button-wrapper'
-              onClick={() => {
-                addCourse(row.original);
-              }
-            }>
-              <AddImage/>
-            </div>
-          </div>
-          
-        ),
-      },
-      {
         Header: 'CRN',
         accessor: 'courseCRN', // accessor is the "key" in the data
       },
@@ -60,6 +42,23 @@ const CourseSectionTable = ({ courseSections, handleAddCourse }) => {
       {
         Header: 'Credit',
         accessor: 'credit',
+      },
+      {
+        // Make an expander cell
+        Header: 'Add', // No header
+        id: 'addButton', // It needs an ID
+        Cell: ({ row }) => (
+          <div>
+            <div 
+              className='add-button-wrapper'
+              onClick={() => {
+                addCourse(row.original);
+              }
+            }>
+              <AddImage/>
+            </div>
+          </div>
+        ),
       },
     ],
     []
