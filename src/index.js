@@ -12,6 +12,7 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import ScheduleCalendar from './components/SchedulePage/scheduleCalendar';
 import { properties } from './properties.js';
+import AppointmentData from './controller/AppointmentData';
 
 const Home =  () => {
   const [value, setValue] = React.useState('1');
@@ -39,6 +40,19 @@ const Home =  () => {
     const copySchedule = [...schedule]
     let idx = copySchedule.indexOf(course);
     copySchedule.splice(idx, 1);
+    setSchedule(prevState => copySchedule);
+  }
+
+  const handleRemoveCourseFromScheduleByCRN = (courseCRN) => {
+    const copySchedule = [...schedule]
+    let delIdx = -1;
+    copySchedule.forEach((course, index) => {
+      if (course.courseCRN === courseCRN) {
+        delIdx = index;
+      }
+    });
+    console.assert(delIdx !== -1, "courseCRN that you want to delete from scheduler cannot be find: " + courseCRN);
+    copySchedule.splice(delIdx, 1);
     setSchedule(prevState => copySchedule);
   }
 
@@ -112,7 +126,7 @@ const Home =  () => {
             <ExplorePage coursesMapByTitleProp={coursesMapByTitle} handleAddCourse={handleAddCourse} scheduleProp={schedule} handleRemoveCourseFromSchedule={handleRemoveCourseFromSchedule}/>
           </TabPanel>
           <TabPanel value="2">
-            <ScheduleCalendar schedule={schedule}/>
+            <ScheduleCalendar schedule={schedule} appointmentProp={new AppointmentData(schedule)} handleRemoveCourseFromScheduleByCRN={handleRemoveCourseFromScheduleByCRN} />
           </TabPanel>
         </TabContext>
       </Box>

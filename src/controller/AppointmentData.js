@@ -1,7 +1,7 @@
 class AppointmentData {
   
 
-  constructor({ schedule }) {
+  constructor(schedule) {
     if (schedule === null || schedule === undefined || schedule.length === 0) return;
 
     // for 2021 Nov, because 2021 Nov 1st is staring from Monday so convinient
@@ -46,8 +46,9 @@ class AppointmentData {
       "title": course.title,
       "startDate": startDate,
       "endDate": endDate,
-      "id": course.courseCRN + time + day,
+      "id": course.courseCRN + "/" + time + day,
       "location": course.room,
+      "course": course,
     };
 
     return data;

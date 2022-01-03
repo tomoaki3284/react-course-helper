@@ -5,27 +5,42 @@ import {
   WeekView,
   Appointments,
   AppointmentTooltip,
+  ConfirmationDialog,
 } from '@devexpress/dx-react-scheduler-material-ui';
-import { ViewState } from '@devexpress/dx-react-scheduler';
-import AppointmentData from '../../controller/AppointmentData';
+import { ViewState, EditingState, IntegratedEditing} from '@devexpress/dx-react-scheduler';
 
-const ScheduleCalendar = (schedule) => {
-  const [appointment, setAppointment] = useState(new AppointmentData(schedule));
-
-  useEffect(() => {
-    setAppointment(new AppointmentData(schedule));
-  }, [schedule]);
-
+const ScheduleCalendar = ({appointmentProp, handleRemoveCourseFromScheduleByCRN}) => {
+  const commitChanges = ({added, changed, deleted}) => {
+    handleRemoveCourseFromScheduleByCRN(deleted.split("/")[0]);
+  }
+  
   return (
     <Paper>
-      <Scheduler data={appointment.datas} height={660}>
+      <Scheduler data={appointmentProp.datas} height={660}>
         <ViewState
             defaultCurrentDate="2021-11-01"
             defaultCurrentViewName="Week"
         />
         <WeekView startDayHour={6} endDayHour={19} excludedDays={[0, 6]}/>
+
+
+        <EditingState
+          onCommitChanges={(data) => {
+            commitChanges(data);
+          }}
+        />
+        <IntegratedEditing />
+
+        <ConfirmationDialog
+          ignoreCancel
+          messages="Are you sure you wamt to remove this class?"
+        />
+
         <Appointments />
-        <AppointmentTooltip />
+        <AppointmentTooltip
+          showCloseButton
+          showDeleteButton
+        />
       </Scheduler>
     </Paper>
   );
