@@ -36,7 +36,7 @@ th {
 
 .course-add-button {
   content: url('../asset/images/icons8-calendar_plus.png');
-  padding-left: 1rem;
+  /* padding-left: 1rem; */
   padding-right: 1rem;
 }
 
@@ -53,7 +53,7 @@ hr {
 
 .add-button-wrapper {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   height: 3rem;
 }

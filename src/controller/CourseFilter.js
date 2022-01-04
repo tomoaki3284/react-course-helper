@@ -7,6 +7,24 @@ class CourseFilter {
   }
 
   /**
+   * Return the param specified filter value
+   * 
+   * @param {string} whichFilter 
+   */
+  getFilterValue(whichFilter) {
+    if (whichFilter.toLowerCase() === 'core') {
+      return this.core;
+    } else if (whichFilter.toLowerCase() === 'mode') {
+      return this.mode;
+    } else if (whichFilter.toLocaleLowerCase() === 'subject') {
+      return this.subject;
+    } else if (whichFilter.toLocaleLowerCase() === 'title') {
+      return this.title;
+    }
+    console.log('whichFilter is not applicable: ', whichFilter);
+  }
+
+  /**
    * Set the filter value on the certain filter
    * 
    * e.g.

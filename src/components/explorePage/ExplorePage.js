@@ -14,7 +14,8 @@ const ExplorePage = ({coursesMapByTitleProp, handleAddCourse, scheduleProp, hand
   
   useEffect(() => {
     setCoursesMapByTitle(coursesMapByTitleProp);
-    setFilteredCourseMap(coursesMapByTitleProp);
+    const newFilteredCourseMap = courseFilter.filterCourse(coursesMapByTitleProp);
+    setFilteredCourseMap(newFilteredCourseMap);
   }, [coursesMapByTitleProp]);
 
   useEffect(() => {}, [scheduleProp]);
@@ -30,7 +31,7 @@ const ExplorePage = ({coursesMapByTitleProp, handleAddCourse, scheduleProp, hand
   return (
     <div className='explore-container'>
       <div className='filter-group-container'>
-        <FilterGroup onInputChange={onInputChangeInFilter}/>
+        <FilterGroup onInputChange={onInputChangeInFilter} courseFilter={courseFilter}/>
       </div>
       <ManualScheduleTab coursesMapByTitle={filteredCourseMap} handleAddCourse={handleAddCourse} />
       <div className='float_filter_viewer_button_group'>
