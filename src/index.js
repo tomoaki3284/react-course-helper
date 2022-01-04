@@ -63,24 +63,9 @@ const Home =  () => {
   // by passing [] as dependencies (second arg), it will only called once
   useEffect(() => {
     async function fetchCourses() {
-      // GET request using fetch with async/await
-
-      // for prod
       const SERVER_URL = properties.REACT_APP_SERVER_URL;
       const courseMap = await fetchFromAPI(SERVER_URL);
       setCoursesMapByTitle(courseMap);
-
-      // // for dev
-      // const arr = await require('./asset/current-semester.json');
-      // const courseMap = new Map();
-      // arr.forEach(course => {
-      //   if (courseMap.get(course.title) === undefined) {
-      //     courseMap.set(course.title, [course]);
-      //   } else {
-      //     courseMap.get(course.title).push(course);
-      //   }
-      // });
-      // setCoursesMapByTitle(Object.fromEntries(courseMap));
     }
 
     async function fetchFromAPI(SERVER_URL) { 
@@ -95,7 +80,6 @@ const Home =  () => {
       .catch((error) => {
         console.log(error)
       });
-  
       return courses;
     }
 
