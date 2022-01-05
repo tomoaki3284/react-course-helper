@@ -5,7 +5,7 @@ import FilterGroup from './FilterGroup';
 
 import '../../css/FilterButton.css';
 
-const FilterButton = ({onInputChange}) => {
+const FilterButton = ({onInputChange, courseFilter}) => {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -22,7 +22,7 @@ const FilterButton = ({onInputChange}) => {
           <img className='filter-button-img' alt=''/>
       </Button>
       <Dialog className='filter-dialog' onClose={handleClose} open={open}>
-        <FilterGroup onInputChange={onInputChange}/>
+        <FilterGroup onInputChange={onInputChange} courseFilter={courseFilter}/>
       </Dialog>
     </div>
   );

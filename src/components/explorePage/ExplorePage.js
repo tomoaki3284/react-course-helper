@@ -35,7 +35,7 @@ const ExplorePage = ({coursesMapByTitleProp, handleAddCourse, scheduleProp, hand
       </div>
       <ManualScheduleTab coursesMapByTitle={filteredCourseMap} handleAddCourse={handleAddCourse} />
       <div className='float_filter_viewer_button_group'>
-        <FilterButton className="filter-button" onInputChange={onInputChangeInFilter}/>
+        <FilterButton className="filter-button" onInputChange={onInputChangeInFilter} courseFilter={courseFilter}/>
         <FullScreenDialog className="schedule-viewer-button" scheduleProp={scheduleProp} handleRemoveCourseFromSchedule={handleRemoveCourseFromSchedule}/>
       </div>
     </div>
