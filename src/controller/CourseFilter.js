@@ -39,7 +39,11 @@ class CourseFilter {
     if (whichFilter === 'core') {
       this.core = newFilterValue;
     } else if (whichFilter === 'mode') {
-      this.mode = newFilterValue;
+      if (newFilterValue === 'remote synchronous') {
+        this.mode = 'remsyc'
+      } else {
+        this.mode = newFilterValue;
+      }
     } else if (whichFilter === 'subject') {
       this.subject = newFilterValue;
     } else if (whichFilter === 'title') {
@@ -90,7 +94,7 @@ class CourseFilter {
     courseMapArr.filter((courseEntry) => {
       const course = courseEntry.courses[0];
       return (this.emptyString(this.core) || course.cores.includes(this.core) || this.core === 'Double Core') &&
-             (this.emptyString(this.mode) || course.room.toLocaleLowerCase() === this.mode) &&
+             (this.emptyString(this.mode) || course.room.toLocaleLowerCase() === this.mode.toLocaleLowerCase()) &&
              (this.emptyString(this.subject) || course.subject === this.subject) &&
              (this.emptyString(this.title) || course.title.toLowerCase().includes(this.title.toLowerCase()));
     })
