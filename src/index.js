@@ -18,6 +18,7 @@ const Home =  () => {
   const [value, setValue] = React.useState('1');
   const [coursesMapByTitle, setCoursesMapByTitle] = React.useState(null);
   const [schedule, setSchedule] = React.useState([]);
+  const [offeringTerm, setOfferingTerm] = React.useState('');
 
   /**
    * 
@@ -65,7 +66,8 @@ const Home =  () => {
     async function fetchCourses() {
       const SERVER_URL = properties.REACT_APP_SERVER_URL;
       const courseMap = await fetchFromAPI(SERVER_URL);
-      setCoursesMapByTitle(courseMap);
+      setCoursesMapByTitle(courseMap[properties.JSON_KEY_COURSES]);
+      setOfferingTerm(courseMap[properties.JSON_KEY_OFFERING_TERM]);
     }
 
     async function fetchFromAPI(SERVER_URL) { 
@@ -107,7 +109,7 @@ const Home =  () => {
             </TabList>
           </Box>
           <TabPanel value="1">
-            <ExplorePage coursesMapByTitleProp={coursesMapByTitle} handleAddCourse={handleAddCourse} scheduleProp={schedule} handleRemoveCourseFromSchedule={handleRemoveCourseFromSchedule}/>
+            <ExplorePage offeringTerm={offeringTerm} coursesMapByTitleProp={coursesMapByTitle} handleAddCourse={handleAddCourse} scheduleProp={schedule} handleRemoveCourseFromSchedule={handleRemoveCourseFromSchedule}/>
           </TabPanel>
           <TabPanel value="2">
             <ScheduleCalendar schedule={schedule} appointmentProp={new AppointmentData(schedule)} handleRemoveCourseFromScheduleByCRN={handleRemoveCourseFromScheduleByCRN} />

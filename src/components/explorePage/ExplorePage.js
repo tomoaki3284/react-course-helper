@@ -8,7 +8,7 @@ import FullScreenDialog from '../FullScreenDialog';
 
 const courseFilter = new CourseFilter();
 
-const ExplorePage = ({coursesMapByTitleProp, handleAddCourse, scheduleProp, handleRemoveCourseFromSchedule}) => {
+const ExplorePage = ({coursesMapByTitleProp, handleAddCourse, scheduleProp, handleRemoveCourseFromSchedule, offeringTerm}) => {
   const [coursesMapByTitle, setCoursesMapByTitle] = useState(coursesMapByTitleProp);
   const [filteredCourseMap, setFilteredCourseMap] = useState(coursesMapByTitleProp);
   
@@ -29,14 +29,17 @@ const ExplorePage = ({coursesMapByTitleProp, handleAddCourse, scheduleProp, hand
   }
 
   return (
-    <div className='explore-container'>
-      <div className='filter-group-container'>
-        <FilterGroup onInputChange={onInputChangeInFilter} courseFilter={courseFilter}/>
-      </div>
-      <ManualScheduleTab coursesMapByTitle={filteredCourseMap} handleAddCourse={handleAddCourse} />
-      <div className='float_filter_viewer_button_group'>
-        <FilterButton className="filter-button" onInputChange={onInputChangeInFilter} courseFilter={courseFilter}/>
-        <FullScreenDialog className="schedule-viewer-button" scheduleProp={scheduleProp} handleRemoveCourseFromSchedule={handleRemoveCourseFromSchedule}/>
+    <div className='explore-container-big'>
+      <h3>{offeringTerm}</h3>
+      <div className='explore-container'>
+        <div className='filter-group-container'>
+          <FilterGroup onInputChange={onInputChangeInFilter} courseFilter={courseFilter}/>
+        </div>
+        <ManualScheduleTab coursesMapByTitle={filteredCourseMap} handleAddCourse={handleAddCourse} />
+        <div className='float_filter_viewer_button_group'>
+          <FilterButton className="filter-button" onInputChange={onInputChangeInFilter} courseFilter={courseFilter}/>
+          <FullScreenDialog className="schedule-viewer-button" scheduleProp={scheduleProp} handleRemoveCourseFromSchedule={handleRemoveCourseFromSchedule}/>
+        </div>
       </div>
     </div>
   );

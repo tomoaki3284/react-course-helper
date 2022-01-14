@@ -4,6 +4,16 @@
   align-items: flex-start;
 }
 
+.explore-container-big {
+  display: flex;
+  flex-direction: column;
+}
+
+h3 {
+  width: 15rem;
+  margin-left: 2.5rem;
+}
+
 .float_filter_viewer_button_group {
   display: flex;
   flex-direction: row;
@@ -20,6 +30,13 @@
 
 /* browser's width is 600px wide or less: */
 @media screen and (max-width: 920px) {
+  h3 {
+    width: 30rem;
+    align-self: center;
+    margin-top: 2rem !important;
+    margin-bottom: 3rem !important;
+  }
+
   .float_filter_viewer_button_group {
     bottom: 1rem;
     right: auto;
