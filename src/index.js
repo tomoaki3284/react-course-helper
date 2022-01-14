@@ -14,6 +14,11 @@ import ScheduleCalendar from './components/SchedulePage/scheduleCalendar';
 import { properties } from './properties.js';
 import AppointmentData from './controller/AppointmentData';
 
+import ReactGA from 'react-ga';
+
+const TRACKING_ID = "216158490"; // YOUR_OWN_TRACKING_ID
+ReactGA.initialize(TRACKING_ID);
+
 const Home =  () => {
   const [value, setValue] = React.useState('1');
   const [coursesMapByTitle, setCoursesMapByTitle] = React.useState(null);
