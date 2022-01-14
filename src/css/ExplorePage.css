@@ -31,10 +31,11 @@ h3 {
 /* browser's width is 600px wide or less: */
 @media screen and (max-width: 920px) {
   h3 {
-    width: 30rem;
+    width: fit-content;
     align-self: center;
     margin-top: 2rem !important;
     margin-bottom: 3rem !important;
+    margin-left: 0;
   }
 
   .float_filter_viewer_button_group {
