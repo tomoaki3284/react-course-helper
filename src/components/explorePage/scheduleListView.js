@@ -32,7 +32,7 @@ const ScheduleListView = ({coursesMapByTitle, handleAddCourse}) => {
   );
 
   const render = () => {
-    if (filteredCourseMap !== null && filteredCourseMap !== undefined && filteredCourseMap.size !== 0) {
+    if (filteredCourseMap !== null && filteredCourseMap !== undefined && JSON.stringify(filteredCourseMap) !== '{}') {
       const courses = courseMapToArray();
 
       return (

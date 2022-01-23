@@ -4,7 +4,7 @@ import '../../css/courseSectionTable.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const CourseSectionTable = ({ courseSections, handleAddCourse }) => {
+const CourseSectionTable = ({ courseSections, handleAddCourse, open }) => {
   const data = React.useMemo(
     () => courseSections, [courseSections]
   )
@@ -65,7 +65,7 @@ const CourseSectionTable = ({ courseSections, handleAddCourse }) => {
   )
 
   return (
-    <div className='table-container'>
+    <div className={'table-container'}>
       <Table columns={columns} data={data} />
       <div className='small-table-container'>
       {

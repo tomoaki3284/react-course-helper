@@ -20,7 +20,7 @@ const CourseItem = ({course, courseSections, handleAddCourse}) => {
       </div>
       {
         expanded ? 
-        <CourseSectionTable courseSections={courseSections} handleAddCourse={handleAddCourse}/>
+        <CourseSectionTable courseSections={courseSections} handleAddCourse={handleAddCourse} open={open}/>
         :
         <div></div>
       }
