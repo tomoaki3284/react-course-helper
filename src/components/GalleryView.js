@@ -1,4 +1,5 @@
 import '../css/GalleryView.css';
+import React from 'react';
 
 const GalleryView = () => {
   return (

@@ -9,41 +9,42 @@ import {
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { ViewState, EditingState, IntegratedEditing} from '@devexpress/dx-react-scheduler';
 
-const ScheduleCalendar = ({appointmentProp, handleRemoveCourseFromScheduleByCRN}) => {
+const ScheduleCalendar = React.forwardRef(({appointmentProp, handleRemoveCourseFromScheduleByCRN}, ref) => {
   const commitChanges = ({added, changed, deleted}) => {
     handleRemoveCourseFromScheduleByCRN(deleted.split("/")[0]);
   }
   
   return (
-    <Paper>
-      <Scheduler data={appointmentProp.datas} height={660}>
-        <ViewState
-            defaultCurrentDate="2021-11-01"
-            defaultCurrentViewName="Week"
-        />
-        <WeekView startDayHour={6} endDayHour={19} excludedDays={[0, 6]}/>
+    <div ref={ref}>
+      <Paper>
+        <Scheduler data={appointmentProp.datas} height={1300}>
+          <ViewState
+              defaultCurrentDate="2021-11-01"
+              defaultCurrentViewName="Week"
+          />
+          <WeekView startDayHour={6} endDayHour={19} excludedDays={[0, 6]}/>
 
+          <EditingState
+            onCommitChanges={(data) => {
+              commitChanges(data);
+            }}
+          />
+          <IntegratedEditing />
 
-        <EditingState
-          onCommitChanges={(data) => {
-            commitChanges(data);
-          }}
-        />
-        <IntegratedEditing />
+          <ConfirmationDialog
+            ignoreCancel
+            messages="Are you sure you wamt to remove this class?"
+          />
 
-        <ConfirmationDialog
-          ignoreCancel
-          messages="Are you sure you wamt to remove this class?"
-        />
-
-        <Appointments />
-        <AppointmentTooltip
-          showCloseButton
-          showDeleteButton
-        />
-      </Scheduler>
-    </Paper>
+          <Appointments />
+          <AppointmentTooltip
+            showCloseButton
+            showDeleteButton
+          />
+        </Scheduler>
+      </Paper>
+    </div>
   );
-}
+});
 
 export default ScheduleCalendar;

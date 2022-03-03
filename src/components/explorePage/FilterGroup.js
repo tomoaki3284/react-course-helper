@@ -2,6 +2,7 @@ import { filter } from '../../asset/properties.js';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import '../../css/FilterGroup.css';
+import React from 'react';
 
 const FilterGroup = ({onInputChange, courseFilter}) => {
   const cores = filter['cores'];

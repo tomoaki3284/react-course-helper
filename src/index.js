@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
 import Navbar from './components/navbar';
@@ -13,12 +13,15 @@ import TabPanel from '@mui/lab/TabPanel';
 import ScheduleCalendar from './components/SchedulePage/scheduleCalendar';
 import { properties } from './properties.js';
 import AppointmentData from './controller/AppointmentData';
+import Button from '@mui/material/Button';
+import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from 'react-component-export-image';
 
 const Home =  () => {
   const [value, setValue] = React.useState('1');
   const [coursesMapByTitle, setCoursesMapByTitle] = React.useState(null);
   const [schedule, setSchedule] = React.useState([]);
   const [offeringTerm, setOfferingTerm] = React.useState('');
+  const componentRef = useRef();
 
   /**
    * 
@@ -112,7 +115,12 @@ const Home =  () => {
             <ExplorePage offeringTerm={offeringTerm} coursesMapByTitleProp={coursesMapByTitle} handleAddCourse={handleAddCourse} scheduleProp={schedule} handleRemoveCourseFromSchedule={handleRemoveCourseFromSchedule}/>
           </TabPanel>
           <TabPanel value="2">
-            <ScheduleCalendar schedule={schedule} appointmentProp={new AppointmentData(schedule)} handleRemoveCourseFromScheduleByCRN={handleRemoveCourseFromScheduleByCRN} />
+            <Button
+            variant="outlined"
+            onClick={() => exportComponentAsPNG(componentRef)}>
+              Export Schedule As PNG
+            </Button>
+            <ScheduleCalendar ref={componentRef} schedule={schedule} appointmentProp={new AppointmentData(schedule)} handleRemoveCourseFromScheduleByCRN={handleRemoveCourseFromScheduleByCRN} />
           </TabPanel>
         </TabContext>
       </Box>
